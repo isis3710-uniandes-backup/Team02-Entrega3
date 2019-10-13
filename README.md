@@ -1,1 +1,2 @@
-# Team02-Entrega3
+# Web-Entrega-3
+Entrega #3: Buscador de ofertas laborales.
