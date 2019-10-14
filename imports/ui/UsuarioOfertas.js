@@ -9,25 +9,29 @@ import { Ofertas } from '../api/ofertas';
 import { withTracker } from 'meteor/react-meteor-data';
 import Oferta from './Oferta';
 
-class OfertasList extends Component {
+class UsuarioOfertas extends Component {
 
     // ! En las siguientes funciones se establece la llamada a las operaciones CRUD declaradas en el API.
-    // ! Para el componente de lista solo dejaremos disponible crear nuevas ofertas.    
+    // ! Para el componente de lista solo dejaremos disponible crear nuevas ofertas.
+    
+    // ! Atencion: Se debe mandar el  usuario para consultar sus ofertas.
+    // ! Se debe mandar por una propiedad llamada user.    
 
-    insertOferta = () => {        
-        // TODO Completar la accion de insertar una oferta dado un formulario, la info debe quedar en un diccionario.        
-        let nuevaOferta = {};
-        Meteor.call('ofertas.insert', nuevaOferta);
-    };
-
-    // * Permite renderizar todas las ofertas disponibles en la base de datos.
+    // * Permite renderizar todas las ofertas disponibles para un usuario en la base de datos.
 
     renderOfertas() {
         //TODO Refactorizar el codigo de las ofertas para que quede bonito.
         let ofertas = this.props.ofertas; //Accede a las ofertas definidas en la DB, obtenidas por withTracker().
-        return ofertas.map(elemento => {
-            return (<Oferta key={elemento._id} oferta={elemento}/>); //Renderizar cada una de las ofertas.
-        });
+        let uOfertas = this.props.user.ofertas;
+        let respuesta = []; //Componentes.
+        for (let i of uOfertas) { //Ofertas del usuario.
+            for (let j of ofertas) { //Ofertas totales.
+                if (i._id === j._id) {
+                    respuesta.push(<Oferta key={i._id} oferta={i}/>);
+                }
+            }
+        }
+        return respuesta; //Arreglo con los componentes.
     }
     
     render() {
@@ -43,6 +47,7 @@ class OfertasList extends Component {
 // ? Permite a la clase suscribirse al contenido de la colleccion y leer de manera reactiva los posibles cambios.
 // ? El parametro al final (Ofertas) es el componente al cual se le asocia la consulta, este concepto esta definido
 // ? como HoC - High Order Components, a mi parecer son como interfaces.
+
 export default withTracker(() => {
     Meteor.subscribe('ofertas'); //La configuracion fue definida en ofertas.js en el API.
 
@@ -53,5 +58,4 @@ export default withTracker(() => {
       ofertas: Ofertas.find({}).fetch(),            
     };
     
-})(OfertasList);
-
+})(UsuarioOfertas);

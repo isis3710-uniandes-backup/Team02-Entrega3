@@ -102,4 +102,25 @@ Meteor.methods({
         //Actualizar
         Usuarios.update(usuarioID, {$set: {ofertas: uOfertas}}, {returnNewDocument: true});
     },
+
+    // ? Retorna todas las ofertas de un usuario especifico.
+    /** 
+    'usuarios.retrieve.ofertas'(usuarioID) {
+        const usuario = Usuarios.findOne(usuarioID); //Obtiene el documento de la oferta dada su ID
+        if (usuario ===  undefined || usuario === null) {
+            throw new Meteor.Error(`[Usuarios] Lo sentimos el usuario con ID: ${usuarioID} no existe.`);
+        }
+
+        //Obtiene todas las ofertas de un usuario.
+        let uOfertas = usuario.ofertas;
+        let respuesta = [];
+
+        for (let i of uOfertas) {
+            let oferta = Ofertas.findOne(i);
+            respuestas.push(i);
+        }
+
+        return respuesta;
+    }
+    */
 });
