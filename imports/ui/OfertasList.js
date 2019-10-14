@@ -69,8 +69,8 @@ class OfertasList extends Component {
         console.log(`Experiencia: ${experiencia}`);
         console.log(`Nive educacion: ${nivelEducacion}`);
         console.log(`Tipo contrato: ${tipoContrato}`);
+        // ? Añadir validaciones para que no se digite información vacia:
 
-        // ! Añadir la información a la base de datos
         
         Ofertas.insert({
             "salarioMin": salMin,
@@ -86,6 +86,18 @@ class OfertasList extends Component {
             "nivelEducacion": nivelEducacion,
             "tipoContrato": tipoContrato
         })
+        //Se limpian los valores del formulario
+        event.target.salarioMinimo.value = '';
+        event.target.salarioMaximo.value = '';
+        event.target.ciudad.value = '';
+        event.target.nombreOferta.value = '';
+        event.target.descripcion.value = '';
+        event.target.carreraProfesional.value = '';
+        event.target.fechaExpiracion.value = '';
+        event.target.area.value = '';
+        event.target.experiencia.value = '';
+        event.target.nivelEducacion.value = '';
+        event.target.tipoContrato.value = '';
         //this.setState({ dataNuevaOferta: event.target.value });
         $('#modalAgregarOferta').modal('hide');
     }
