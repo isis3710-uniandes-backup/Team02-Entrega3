@@ -23,15 +23,28 @@ export default class Oferta extends Component {
     };
 
     render() {
+        //TODO Terminar bien la visualizacion de la oferta, dejar el HTML bonito.
         const {oferta} = this.props; //Declaracion oferta = this.props.oferta
         return(
             <div className="container-fluid">
-                {
-                    Object.keys(oferta).map((key, index) => (
-                        <h5 key={index} className="justify-content-center"> {key}: {oferta[key]}</h5>
-                    ))
-                }
-                <button type="button" className="btn btn-danger" onClick={this.deleteOferta.bind(this)}> Eliminar Oferta</button>
+                <div className="card justify-content-center">
+                    <h5 className="justify-content-center">{oferta.nombre}</h5>
+                    <div className="row align-content- center">
+                        <h5>Ciudad</h5>
+                        <h5 className="justify-content-center">{oferta.ciudad}</h5>
+                    </div>
+                    <div className="row align-content- center">
+                        <h5>Salario Minimo</h5>
+                        <h5 className="justify-content-center">{oferta.salarioMin}</h5>
+                        <h5>Salario Maximo</h5>
+                        <h5 className="justify-content-center">{oferta.salarioMax}</h5>                        
+                    </div>
+                    <div className="row align-content- center">
+                        <h5>Carrera Profesional</h5>
+                        <h5 className="justify-content-center">{oferta.carreraProfesional}</h5>                                               
+                    </div>                                                                                
+                    <button type="button" className="btn btn-danger" onClick={this.deleteOferta.bind(this)}> Eliminar Oferta</button>
+                </div>               
             </div>
         );
     };

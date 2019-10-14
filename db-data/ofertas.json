@@ -2,6 +2,8 @@
         "salarioMin": 800000,
         "salarioMax": 1000000,
         "ciudad": "Bogota",
+        "nombre": "Auxiliar de Cocina",
+        "descripcion": "Personal para servidor alimentos en comedores escolares",
         "CarreraProfesional": "Alimentos",
         "fechaPublicacion": "13/10/2019",
         "fechaExpiracion": "13/12/2019",
@@ -11,3 +13,5 @@
         "tipoContrato": "Prestacion de Servicios"
     }
 ]
+
+db.ofertas.insert({"salarioMin": 800000,"salarioMax": 1000000,"ciudad": "Bogota","CarreraProfesional": "Alimentos", "fechaPublicacion": "13/10/2019", "fechaExpiracion": "13/12/2019", "Area": "Alimentos y Sanidad", "Experiencia": "1 año", "nivelEducacion": "Profesional", "tipoContrato": "Prestacion de Servicios"})

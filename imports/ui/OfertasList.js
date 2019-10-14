@@ -7,6 +7,7 @@ import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
 import { Ofertas } from '../api/ofertas';
 import { withTracker } from 'meteor/react-meteor-data';
+import Oferta from './Oferta';
 
 class OfertasList extends Component {
 
