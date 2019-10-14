@@ -5,6 +5,7 @@
 import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Ofertas } from '../api/ofertas';
+import OfertasList from './OfertasList';
 
 export default class Oferta extends Component {
     // ! En las siguientes funciones se establece la llamada a las operaciones CRUD declaradas en el API.
@@ -30,28 +31,33 @@ export default class Oferta extends Component {
 
     render() {
         //TODO Terminar bien la visualizacion de la oferta, dejar el HTML bonito.
-        const {oferta} = this.props; //Declaracion oferta = this.props.oferta
-        return(
-            <div className="container-fluid">
-                <div className="card justify-content-center">
-                    <h5 className="justify-content-center">{oferta.nombre}</h5>
-                    <div className="row align-content- center">
-                        <h5>Ciudad</h5>
-                        <h5 className="justify-content-center">{oferta.ciudad}</h5>
+        const { oferta } = this.props; //Declaracion oferta = this.props.oferta
+        return (
+
+            <div className="card justify-content-center bg-secondary shadow">
+                <div className="card-header">
+                    <div className="row justify-content-center"><h2 className="card-title text-white">{oferta.nombre}</h2></div>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item list-group-item-light"><strong>Descripcion:</strong> {oferta.descripcion} </li>
+                        <li class="list-group-item list-group-item-light"><strong>Ciudad:</strong> {oferta.ciudad} </li>
+                        <li class="list-group-item list-group-item-light"><strong>Salario mínimo:</strong> {oferta.salarioMin} </li>
+                        <li class="list-group-item list-group-item-light"><strong>Salario máximo:</strong> {oferta.salarioMax} </li>
+                        <li class="list-group-item list-group-item-light"><strong>Carrera profesional:</strong> {oferta.carreraProfesional} </li>
+
+                    </ul>
+                    <br></br>
+                    <div className="row">
+                        <div className="col-4">
+                            <button type="button" className="btn btn-danger" onClick={this.deleteOferta.bind(this)}> <i className="fas fa-trash prefix grey-text"></i></button>
+                        </div>
                     </div>
-                    <div className="row align-content- center">
-                        <h5>Salario Minimo</h5>
-                        <h5 className="justify-content-center">{oferta.salarioMin}</h5>
-                        <h5>Salario Maximo</h5>
-                        <h5 className="justify-content-center">{oferta.salarioMax}</h5>                        
-                    </div>
-                    <div className="row align-content- center">
-                        <h5>Carrera Profesional</h5>
-                        <h5 className="justify-content-center">{oferta.carreraProfesional}</h5>                                               
-                    </div>                                                                                
-                    <button type="button" className="btn btn-danger" onClick={this.deleteOferta.bind(this)}> Eliminar Oferta</button>
-                </div>               
+
+                </div>
+
             </div>
+
         );
     };
 }
