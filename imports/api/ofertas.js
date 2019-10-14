@@ -5,9 +5,8 @@
 
 import { Mongo } from 'meteor/mongo';
 import { Meteor } from 'meteor/meteor';
-import { check } from 'meteor/check';
 
-export const Ofertas = Mongo.Collection('ofertas');
+export const Ofertas = new Mongo.Collection('ofertas');
 
 // * Meteor funciona con el patron publicacion/subscripcion, como Angular.
 // * Permite crear un conjunto datos (la colleccion) llamada en el servidor, la funcion permite que un cliente

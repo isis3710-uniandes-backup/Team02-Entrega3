@@ -1,0 +1,8 @@
+mongoimport --db MyTimeDB --collection users --type json --file C:\Users\uno\Documents\WEB\Team02-Entrega2\app-back\dumbDB\users.json --jsonArray
+mongoimport --db MyTimeDB --collection proyects --type json --file C:\Users\uno\Documents\WEB\Team02-Entrega2\app-back\dumbDB\proyects.json --jsonArray
+
+La siguiente linea importa la base de datos de las ofertas y la respectiva colleccion de ofertas laborales.
+cambien la ruta de file a donde se encuentre su proyecto, dejenlo entre comillas para evitarse problemas por
+los espacios en la ruta.
+
+mongoimport --db OfertasDB --collection ofertas --type json --file "C:\Users\Geovanny\Desktop\Univesidad de los Andes\Sexto Semestre - 2019-2\Programación Web\Entrega 3\Team02-Entrega3\app-back\dumbDB\ofertas.json" --jsonArray
