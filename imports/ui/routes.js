@@ -12,7 +12,7 @@ import Login from './Login';
  */
 Meteor.startup(()=>{
     render(<HashRouter >
-        <Route path="/login" component={Login}/>
+        <Route path="/" component={Login}/>
         <Route path="/ofertas" component={OfertasList}/>
     </HashRouter>,
         document.getElementById('root')
