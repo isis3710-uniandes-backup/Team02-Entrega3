@@ -104,7 +104,12 @@ class OfertasList extends Component {
         return (
             <div className="container-fluid">
                 <h4 className="justify-content-center"> Ofertas Laborales </h4>
-                <ul>{this.renderOfertas()}</ul>
+                <div className="container-fluid">
+                    <div className="card-columns">
+                        {this.renderOfertas()}
+                    </div>
+                </div>
+
 
                 <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#modalAgregarOferta" onClick={this.handleClickAgregarOferta}>
                     Agregar oferta
@@ -127,8 +132,8 @@ class OfertasList extends Component {
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="inputDescripcion">Descripcion </label>
-                                        <input type="text" name="descripcion" className="form-control" id="inputDescripcion"
-                                            placeholder="Descripcion de la oferta"></input>
+                                        <textarea type="text" name="descripcion" className="form-control" id="inputDescripcion"
+                                            placeholder="Descripcion de la oferta"></textarea>
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="inputCarreraProfesional">Carrera profesional </label>
@@ -174,11 +179,14 @@ class OfertasList extends Component {
                                         <input type="number" name="salarioMaximo" className="form-control" id="inputSalarioMaximo"
                                             placeholder="Salario máximo de la oferta"></input>
                                     </div>
-
-                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                    <button type="submit" value="Submit" className="btn btn-success">Submit</button>
-
-
+                                    <div className="row">
+                                        <div className="col-6">
+                                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                        </div>
+                                        <div className="col-6">
+                                            <button type="submit" value="Submit" className="btn btn-success">Submit</button>
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
                         </div>
