@@ -1,9 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { render } from 'react-dom';
 
-import OfertasList from '../imports/ui/OfertasList';
+import '../imports/ui/routes';
 
-Meteor.startup(() => {
-    render(<OfertasList/>, document.getElementById('root'));
-  });
+
