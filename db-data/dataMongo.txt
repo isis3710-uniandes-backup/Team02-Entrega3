@@ -1,0 +1,28 @@
+db.ofertas.insert(
+{
+        "salarioMin": 800000,
+        "salarioMax": 1000000,
+        "ciudad": "Cali",
+        "nombre": "Auxiliar de Aseo",
+        "descripcion": "Personal para barrer pisos",
+        "CarreraProfesional": "NA",
+        "fechaPublicacion": "13/10/2019",
+        "fechaExpiracion": "13/12/2019",
+        "Area": "Servicios Generales",
+        "Experiencia": "1 año",
+        "nivelEducacion": "NA",
+        "tipoContrato": "Prestacion de Servicios"
+})
+
+db.usuarios.insert({
+        "nombre": "Andres Lopez",
+        "email": "example@example.com",
+        "password": "test",
+        "ofertas": ["5da4794dbb92e0707f99fb42"]
+})
+
+db.usuarios.update({
+        {"_id": ObjectId("5da40875d0f8210ba5711495")},
+        { $set: {"ofertas": ["5da4794dbb92e0707f99fb42"]},
+        { returnNewDocument: true},
+})

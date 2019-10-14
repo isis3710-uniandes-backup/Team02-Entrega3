@@ -21,20 +21,23 @@ class UsuarioOfertas extends Component {
     // * Actualizar el estado del componente con el objeto user que llega. user: this.props.user.
 
     state = {
+        //Asignarlo por el valor en props.
+        //! Si desea hacer pruebas que el _id corresponda a un usuario en la base de datos al igual que el tag de la oferta.
+
         user : { 
-            "_id" : "5da40875d0f8210ba5711495",
+            "_id" : "5da47c6abb92e0707f99fb43",
             "nombre": "Andres Lopez",
             "email": "example@example.com",
             "password": "test",
-            "ofertas": ["5da4004dd0f8210ba5711494"]
+            "ofertas": ["5da4794dbb92e0707f99fb42"]
         }
     };
 
     deleteOferta = (ofertaId) => {
         this.state.user.ofertas.splice(ofertaId, 1); //Elimina el elemento con el id dado.
         this.setState({user: this.state.user}); //Actualizar el estado del componente.
-        Meteor.call('usuarios.remove.oferta', this.state.user._id, ofertaId);
-        //Meteor.call('usuarios.remove.oferta', this.state.user._id._str, ofertaId); Cuando se tenga el user en el props.
+        let o_id = new Meteor.Collection.ObjectID(this.state.user._id); //Despues de un siglo .____.
+        Meteor.call('usuarios.remove.oferta', o_id, ofertaId);        
     }
 
     renderOfertas() {
@@ -43,8 +46,8 @@ class UsuarioOfertas extends Component {
         // ! Se deja un usuario de prueba.
 
         let ofertas = this.props.ofertas; //Accede a las ofertas definidas en la DB, obtenidas por withTracker().        
-        // ? Comentario Personal: Meteor se explota con cualquier undefined y no compila nada :'( incluso en consultas.
-        //TODO Pasar la informacion del usuario cuando se conecta y desahibilitar la funcion de prueba.       
+        // ? Comentario Personal: Meteor se explota con cualquier undefined y no compila nada :'( incluso en consultas de tipo (if a === undefined).
+        //TODO Pasar la informacion del usuario cuando se conecta y deshabilitar el user de prueba.       
 
         let uOfertas = this.state.user.ofertas;        
         let respuesta = []; //Componentes.
