@@ -11,5 +11,20 @@
         "Experiencia": "1 año",
         "nivelEducacion": "Profesional",
         "tipoContrato": "Prestacion de Servicios"
+    },
+    {
+        "salarioMin": 800000,
+        "salarioMax": 1000000,
+        "ciudad": "Cali",
+        "nombre": "Auxiliar de Aseo",
+        "descripcion": "Personal para barrer pisos",
+        "CarreraProfesional": "NA",
+        "fechaPublicacion": "13/10/2019",
+        "fechaExpiracion": "13/12/2019",
+        "Area": "Servicios Generales",
+        "Experiencia": "1 año",
+        "nivelEducacion": "NA",
+        "tipoContrato": "Prestacion de Servicios"
     }
 ]
+

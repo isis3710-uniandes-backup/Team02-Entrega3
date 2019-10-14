@@ -12,7 +12,13 @@ export default class Oferta extends Component {
 
     // ? Elimina la oferta actual.
     deleteOferta = () => {
-        Meteor.call('ofertas.remove', this.props.oferta._id); //Elimina la oferta actual.
+        if (this.props.principal) {
+            Meteor.call('ofertas.remove', this.props.oferta._id); //Elimina la oferta actual.
+        }
+        else {
+            //Debe existir obligatoriamente una funcion para eliminar a la oferta del estado del usuario .
+            this.props.delete(this.props.oferta._id._str);
+        }
     };
 
     // ? Actualiza los valores de la oferta actual.

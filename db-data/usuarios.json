@@ -3,6 +3,6 @@
         "nombre": "Andres Lopez",
         "email": "example@example.com",
         "password": "test",
-        "ofertas": []
+        "ofertas": ["5da3f922d0f8210ba5711493"]
     }
 ]
