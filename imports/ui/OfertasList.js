@@ -11,6 +11,10 @@ import Oferta from './Oferta';
 
 class OfertasList extends Component {
 
+    state = {
+        dataNuevaOferta: ''
+    }
+
     // ! En las siguientes funciones se establece la llamada a las operaciones CRUD declaradas en el API.
     // ! Para el componente de lista solo dejaremos disponible crear nuevas ofertas.    
 
@@ -30,8 +34,60 @@ class OfertasList extends Component {
         });
     }
 
-    handleClickAgregarOferta() {
+    handleClickAgregarOferta = () => {
         $('#modalAgregarOferta').modal('show');
+        console.log(`Datos: ${this.state.dataNuevaOferta}`);
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+        console.log("En metodo submit...");
+        //console.log(event.target.value);
+        console.log(`Nombre oferta: ${event.target.nombreOferta.value}`);
+
+
+        const salMin = event.target.salarioMinimo.value;
+        const salMax = event.target.salarioMaximo.value;
+        const ciudad = event.target.ciudad.value;
+        const nombreOferta = event.target.nombreOferta.value;
+        const descripcion = event.target.descripcion.value;
+        const carreraProfesional = event.target.carreraProfesional.value;
+        const fechaExpiracion = event.target.fechaExpiracion.value;
+        const area = event.target.area.value;
+        const experiencia = event.target.experiencia.value;
+        const nivelEducacion = event.target.nivelEducacion.value;
+        const tipoContrato = event.target.tipoContrato.value;
+
+        console.log(`Salario minimo: ${salMin}`);
+        console.log(`Salario maximo: ${salMax}`);
+        console.log(`Ciudad: ${ciudad}`);
+        console.log(`Nombre oferta: ${nombreOferta}`);
+        console.log(`Descripcion: ${descripcion}`);
+        console.log(`Carrera profesional: ${carreraProfesional}`);
+        console.log(`Fecha expiracion: ${fechaExpiracion}`);
+        console.log(`Area: ${area}`);
+        console.log(`Experiencia: ${experiencia}`);
+        console.log(`Nive educacion: ${nivelEducacion}`);
+        console.log(`Tipo contrato: ${tipoContrato}`);
+
+        // ! Añadir la información a la base de datos
+        
+        Ofertas.insert({
+            "salarioMin": salMin,
+            "salarioMax": salMax,
+            "ciudad": ciudad,
+            "nombre": nombreOferta,
+            "descripcion": descripcion,
+            "CarreraProfesional": carreraProfesional,
+            "fechaPublicacion": new Date(),
+            "fechaExpiracion": fechaExpiracion,
+            "Area": area,
+            "Experiencia": experiencia,
+            "nivelEducacion": nivelEducacion,
+            "tipoContrato": tipoContrato
+        })
+        //this.setState({ dataNuevaOferta: event.target.value });
+        $('#modalAgregarOferta').modal('hide');
     }
 
     render() {
@@ -54,7 +110,7 @@ class OfertasList extends Component {
                                 </button>
                             </div>
                             <div className="modal-body">
-                                <form id="form-oferta">
+                                <form id="form-oferta" onSubmit={this.handleSubmit.bind(this)}>
                                     <div className="form-group">
                                         <label htmlFor="inputNombreOferta">Nombre </label>
                                         <input type="text" name="nombreOferta" className="form-control" id="inputNombreOferta" placeholder="Nombre de la oferta"></input>
@@ -98,10 +154,20 @@ class OfertasList extends Component {
                                         <input type="text" name="tipoContrato" className="form-control" id="inputTipoContrato"
                                             placeholder="Tipo de contrato de la oferta"></input>
                                     </div>
-                                    <div className="modal-footer">
-                                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                        <button type="submit" value="Submit" className="btn btn-success">Submit</button>
+                                    <div className="form-group">
+                                        <label htmlFor="inputSalarioMinimo">Salario mínimo </label>
+                                        <input type="number" name="salarioMinimo" className="form-control" id="inputSalarioMinimo"
+                                            placeholder="Salario mínimo de la oferta"></input>
                                     </div>
+                                    <div className="form-group">
+                                        <label htmlFor="inputSalarioMaximo">Salario máximo </label>
+                                        <input type="number" name="salarioMaximo" className="form-control" id="inputSalarioMaximo"
+                                            placeholder="Salario máximo de la oferta"></input>
+                                    </div>
+
+                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                    <button type="submit" value="Submit" className="btn btn-success">Submit</button>
+
 
                                 </form>
                             </div>

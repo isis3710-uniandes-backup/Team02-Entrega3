@@ -5,6 +5,7 @@ class Inicio extends Component {
         return (
             <div className="container-fluid">
                 <h4 className="justify-content-center"> Página de inicio </h4>
+                
             </div>
         );
     };
