@@ -42,10 +42,7 @@ class OfertasList extends Component {
     handleSubmit(event) {
         event.preventDefault();
         console.log("En metodo submit...");
-        //console.log(event.target.value);
-        console.log(`Nombre oferta: ${event.target.nombreOferta.value}`);
-
-
+        //Se atrapan los valores digitados por el usuario
         const salMin = event.target.salarioMinimo.value;
         const salMax = event.target.salarioMaximo.value;
         const ciudad = event.target.ciudad.value;
@@ -69,24 +66,37 @@ class OfertasList extends Component {
         console.log(`Experiencia: ${experiencia}`);
         console.log(`Nive educacion: ${nivelEducacion}`);
         console.log(`Tipo contrato: ${tipoContrato}`);
-
-        // ! Añadir la información a la base de datos
-        
-        Ofertas.insert({
-            "salarioMin": salMin,
-            "salarioMax": salMax,
-            "ciudad": ciudad,
-            "nombre": nombreOferta,
-            "descripcion": descripcion,
-            "CarreraProfesional": carreraProfesional,
-            "fechaPublicacion": new Date(),
-            "fechaExpiracion": fechaExpiracion,
-            "Area": area,
-            "Experiencia": experiencia,
-            "nivelEducacion": nivelEducacion,
-            "tipoContrato": tipoContrato
-        })
-        //this.setState({ dataNuevaOferta: event.target.value });
+        // Unicamente se añade la oferta a la DB si se llenan todos los campos
+        if (salMin != '' && salMax != '' && ciudad != '' && nombreOferta != '' && descripcion != '' && carreraProfesional != ''
+            && fechaExpiracion != '' && area != '' && experiencia != '' && nivelEducacion != '' && tipoContrato != '') {
+            Ofertas.insert({
+                "salarioMin": salMin,
+                "salarioMax": salMax,
+                "ciudad": ciudad,
+                "nombre": nombreOferta,
+                "descripcion": descripcion,
+                "CarreraProfesional": carreraProfesional,
+                "fechaPublicacion": new Date(),
+                "fechaExpiracion": fechaExpiracion,
+                "Area": area,
+                "Experiencia": experiencia,
+                "nivelEducacion": nivelEducacion,
+                "tipoContrato": tipoContrato
+            })
+        }
+        //Se limpian los valores del formulario
+        event.target.salarioMinimo.value = '';
+        event.target.salarioMaximo.value = '';
+        event.target.ciudad.value = '';
+        event.target.nombreOferta.value = '';
+        event.target.descripcion.value = '';
+        event.target.carreraProfesional.value = '';
+        event.target.fechaExpiracion.value = '';
+        event.target.area.value = '';
+        event.target.experiencia.value = '';
+        event.target.nivelEducacion.value = '';
+        event.target.tipoContrato.value = '';
+        //Escondemos el modal que contiene el formulario
         $('#modalAgregarOferta').modal('hide');
     }
 
