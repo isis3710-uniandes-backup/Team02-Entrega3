@@ -14,7 +14,7 @@ class OfertasList extends Component {
     // ! En las siguientes funciones se establece la llamada a las operaciones CRUD declaradas en el API.
     // ! Para el componente de lista solo dejaremos disponible crear nuevas ofertas.    
 
-    insertOferta = () => {        
+    insertOferta = () => {
         // TODO Completar la accion de insertar una oferta dado un formulario, la info debe quedar en un diccionario.        
         let nuevaOferta = {};
         Meteor.call('ofertas.insert', nuevaOferta);
@@ -26,15 +26,88 @@ class OfertasList extends Component {
         //TODO Refactorizar el codigo de las ofertas para que quede bonito.
         let ofertas = this.props.ofertas; //Accede a las ofertas definidas en la DB, obtenidas por withTracker().
         return ofertas.map(elemento => {
-            return (<Oferta key={elemento._id} oferta={elemento} principal={true}/>); //Renderizar cada una de las ofertas.
+            return (<Oferta key={elemento._id} oferta={elemento} principal={true} />); //Renderizar cada una de las ofertas.
         });
     }
-    
+
+    handleClickAgregarOferta() {
+        $('#modalAgregarOferta').modal('show');
+    }
+
     render() {
         return (
             <div className="container-fluid">
                 <h4 className="justify-content-center"> Ofertas Laborales </h4>
                 <ul>{this.renderOfertas()}</ul>
+
+                <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#modalAgregarOferta" onClick={this.handleClickAgregarOferta}>
+                    Agregar oferta
+                </button>
+
+                <div className="modal fade" id="modalAgregarOferta" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div className="modal-dialog" role="document">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="exampleModalLabel">Agregar Oferta Laboral</h5>
+                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div className="modal-body">
+                                <form id="form-oferta">
+                                    <div className="form-group">
+                                        <label htmlFor="inputNombreOferta">Nombre </label>
+                                        <input type="text" name="nombreOferta" className="form-control" id="inputNombreOferta" placeholder="Nombre de la oferta"></input>
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="inputDescripcion">Descripcion </label>
+                                        <input type="text" name="descripcion" className="form-control" id="inputDescripcion"
+                                            placeholder="Descripcion de la oferta"></input>
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="inputCarreraProfesional">Carrera profesional </label>
+                                        <input type="text" name="carreraProfesional" className="form-control" id="inputCarreraProfesional"
+                                            placeholder="Carrera profesional requerida"></input>
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="inputArea">Area </label>
+                                        <input type="text" name="area" className="form-control" id="inputArea"
+                                            placeholder="Area"></input>
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="inputCiudad">Ciudad </label>
+                                        <input type="text" name="ciudad" className="form-control" id="inputCiudad"
+                                            placeholder="Ciudad de la oferta"></input>
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="inputFechaExpiracion">Fecha de expiracion </label>
+                                        <input type="date" name="fechaExpiracion" className="form-control" id="inputFechaExpiracion"></input>
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="inputExperiencia">Experiencia </label>
+                                        <input type="text" name="experiencia" className="form-control" id="inputExperiencia"
+                                            placeholder="Experiencia requerida"></input>
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="inputNivelEducacion">Nivel de educacion </label>
+                                        <input type="text" name="nivelEducacion" className="form-control" id="inputNivelEducacion"
+                                            placeholder="Nivel de educacion requerida"></input>
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="inputTipoContrato">Tipo de contrato </label>
+                                        <input type="text" name="tipoContrato" className="form-control" id="inputTipoContrato"
+                                            placeholder="Tipo de contrato de la oferta"></input>
+                                    </div>
+                                    <div className="modal-footer">
+                                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                        <button type="submit" value="Submit" className="btn btn-success">Submit</button>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     };
@@ -48,10 +121,10 @@ export default withTracker(() => {
 
     // ! Estas son las vistas deseadas del contenido en la colleccion, son arreglos.
     // ! Si desea otras puede colocar una nueva entrada en el diccionario de salida cuyo valor es el arreglo consulta.
-    
+
     return {
-      ofertas: Ofertas.find({}).fetch(),            
+        ofertas: Ofertas.find({}).fetch(),
     };
-    
+
 })(OfertasList);
 
