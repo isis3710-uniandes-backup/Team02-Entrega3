@@ -22,6 +22,7 @@ class Login extends Component {
 	getLogData = (user, pass) => {
 		try {  for(let i = 0;i<this.props.usuarios.length;i++){
 			if(this.props.usuarios[i].nombre==user && this.props.usuarios[i].password==pass){
+				
 				return this.props.usuarios[i];
 			}
 		}}
@@ -44,9 +45,12 @@ class Login extends Component {
 
 			//* Actualizar el nombre de usuario con el estado padre.
 			let user_data = data; //Datos del usuario.
+			console.log(this.props.userf);
 			this.props.history.push({ //* Actualizar la vista.
 				pathname: '/ofertas',
-				correo: user_data.mail
+				correo: user_data.email,
+				_id: user_data._id,
+				nombre: user_data.nombre
 			});
 	};
 
