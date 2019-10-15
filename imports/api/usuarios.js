@@ -73,7 +73,7 @@ Meteor.methods({
 
     // ? Asocia una oferta laboral con un usuario cuando es de su preferencia.
     'usuarios.insert.oferta'(usuarioID, ofertaID) {
-        const usuario = Usuarios.findOne(usuarioID); //Obtiene el documento de la oferta dada su ID
+        const usuario = Usuarios.findOne({nombre:usuarioID}); //Obtiene el documento de la oferta dada su ID
         if (usuario ===  undefined || usuario === null) {
             throw new Meteor.Error(`[Usuarios] Lo sentimos el usuario con ID: ${usuarioID} no existe.`);
         }
