@@ -13,32 +13,65 @@ class OfertasList extends Component {
 
     // ! En las siguientes funciones se establece la llamada a las operaciones CRUD declaradas en el API.
     // ! Para el componente de lista solo dejaremos disponible crear nuevas ofertas.    
-
+    state = {
+        search: '',
+        nivelEducacion: '',
+        ciudad: '',
+        salMax: 0,
+        salMin: 0
+    }
 
     insertOferta = () => {
-        // TODO Completar la accion de insertar una oferta dado un formulario, la info debe quedar en un diccionario.        
         let nuevaOferta = {};
         Meteor.call('ofertas.insert', nuevaOferta);
     };
 
     // * Permite renderizar todas las ofertas disponibles en la base de datos.
-
     renderOfertas() {
-        //TODO Refactorizar el codigo de las ofertas para que quede bonito.
-        let ofertas = this.props.ofertas; //Accede a las ofertas definidas en la DB, obtenidas por withTracker().
+      //Accede a las ofertas definidas en la DB, obtenidas por withTracker().
+        this.state.search = this.props.searchProp;
+        this.state.nivelEducacion = this.props.educacionProp;
+        this.state.ciudad = this.props.ciudadProp;
+        this.state.salMax = this.props.salarioMaximoProp;
+        this.state.salMin = this.props.salarioMinimoProp;
+       let ofertas;
+       if(this.state.search == undefined || this.state.search === '' )
+       {
+        ofertas = this.props.ofertas;
+       
+       }
+       else
+     {
+        ofertas = this.props.ofertas.filter(
+            (oferta) => {
+                return (oferta.descripcion.indexOf(this.state.search) !== -1) && (oferta.nivelEducacion.indexOf(this.state.nivelEducacion) !== -1)
+                && (oferta.ciudad.indexOf(this.state.ciudad) !== -1)
+                && (oferta.salarioMax < this.state.salMax)
+                && (oferta.salarioMin > this.state.salMin)
+                
+                ;
+            }
+
+        ); 
+        
+    }
+        
+          
+          
+        
         return ofertas.map(elemento => {
             return (<Oferta key={elemento._id} oferta={elemento} principal={true} usuario={this.props.usuario} fUpdate={this.props.fUpdate}/>); //Renderizar cada una de las ofertas.
         });
-    }    
+    }
+
+    
 
     handleClickAgregarOferta = () => {
         $('#modalAgregarOferta').modal('show');
-        console.log(`Datos: ${this.state.dataNuevaOferta}`);
     }
 
     handleSubmit(event) {
         event.preventDefault();
-        console.log("En metodo submit...");
         //Se atrapan los valores digitados por el usuario
         const salMin = event.target.salarioMinimo.value;
         const salMax = event.target.salarioMaximo.value;
@@ -72,14 +105,13 @@ class OfertasList extends Component {
                 "ciudad": ciudad,
                 "nombre": nombreOferta,
                 "descripcion": descripcion,
-                "carreraProfesional": carreraProfesional,
+                "CarreraProfesional": carreraProfesional,
                 "fechaPublicacion": new Date(),
                 "fechaExpiracion": fechaExpiracion,
                 "area": area,
                 "experiencia": experiencia,
                 "nivelEducacion": nivelEducacion,
-                "tipoContrato": tipoContrato,
-                "usuario": this.props.usuario.nombre
+                "tipoContrato": tipoContrato
             })
         }
         //Se limpian los valores del formulario
@@ -99,7 +131,9 @@ class OfertasList extends Component {
     }
 
     render() {
+       
         return (
+            
             <div className="container-fluid">
                 <div className="container-fluid">
                     <div className="row">

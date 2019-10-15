@@ -5,31 +5,30 @@ import UsuarioOfertas from './UsuarioOfertas';
 import Usuario from './Usuario';
 
 class OfertasBoard extends Component {
+
 	logOut = () => {
 		this.props.history.push({
 			pathname: '/'
 		});
 	};
 
+    getInput = (searchVar,ciudadV,educacionV, salarioMaximoV, salarioMinimoV) =>
+    {
+        this.setState({search: searchVar});
+        this.setState({ciudad: ciudadV});
+        this.setState({educacion: educacionV});
+        this.setState({salarioMaximo: salarioMaximoV});
+        this.setState({salarioMinimo: salarioMinimoV});
+   
+    }
+   
 	state = {
-		favoritos: 0
+        favoritos: 0,
+        search: ''
 	};
 
 	updateUser = (x) => {
 		this.props.history.location.ofertas.push(x);
-	};
-
-	componentDidMount() {
-		console.log(this.props);
-		console.log(this.props.history.location.correo);
-	}
-
-	changeFavoritos = () => {
-		this.setState({ favoritos: true });
-	};
-
-	changeHome = () => {
-		this.setState({ favoritos: false });
 	};
 
 	changeFavoritos = () => {
@@ -49,10 +48,11 @@ class OfertasBoard extends Component {
 			return (
 				<div className="row">
 					<div className="col-4">
-						<FilterColumn />
+                    <FilterColumn searchCallback = {this.getInput}/>
 					</div>
 					<div className="col-8">
-						<OfertasList usuario={this.props.history.location} fUpdate={this.updateUser}/>
+						<OfertasList usuario={this.props.history.location} fUpdate={this.updateUser}   searchProp ={this.state.search} ciudadProp ={this.state.ciudad} educacionProp ={this.state.educacion} 
+                        salarioMaximoProp ={this.state.salarioMaximo} salarioMinimoProp ={this.state.salarioMinimo}/>
 					</div>
 				</div>
 			);
@@ -60,7 +60,7 @@ class OfertasBoard extends Component {
 			return (
 				<div className="row">
 					<div className="col-12">
-						<UsuarioOfertas usuario={this.props.history.location} />
+						<UsuarioOfertas usuario={this.props.history.location} fUpdate={this.updateUser} />
 					</div>
 				</div>
 			);
@@ -68,45 +68,6 @@ class OfertasBoard extends Component {
 			return (
 				<div className="row justify-content-center">
 					<div className="col-">
-						<Usuario user={this.props.history.location} />
-					</div>
-				</div>
-			);
-		}
-	};
-
-	changeHome = () => {
-		this.setState({ favoritos: 0 });
-	};
-
-	changeCuenta = () => {
-		this.setState({ favoritos: 2 });
-	};
-
-	showFavoritos = () => {
-		if (this.state.favoritos == 0) {
-			return (
-				<div className="row">
-					<div className="col-4">
-						<FilterColumn />
-					</div>
-					<div className="col-8">
-						<OfertasList usuario={this.props.history.location} />
-					</div>
-				</div>
-			);
-		} else if (this.state.favoritos == 1) {
-			return (
-				<div className="row">
-					<div className="col-12">
-						<UsuarioOfertas usuario={this.props.history.location} />
-					</div>
-				</div>
-			);
-		} else {
-			return (
-				<div className="row">
-					<div className="col-12">
 						<Usuario user={this.props.history.location} />
 					</div>
 				</div>

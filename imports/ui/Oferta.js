@@ -12,7 +12,6 @@ export default class Oferta extends Component {
     // ! Aqui se incluyen las diferentes opciones que no son parte del Retrieve en el CRUD.
 
     constructor(props) {
-        console.log("[Oferta] Propiedades", props);
         super(props);
         this.handleVerMas = this.handleVerMas.bind(this);
         this.state = { verMas: false };
@@ -42,15 +41,12 @@ export default class Oferta extends Component {
 
     // ? Actualiza los valores de la oferta actual.
     updateOferta = () => {
-        //TODO Crear un formulario bonito y actualizar los datos.
         let update = {};
         Meteor.call('ofertas.update', this.props.oferta._id, update); //Actualiza la oferta actual en la DB.
     };
 
-    añadirOfertaAUsuario() {
-        //TODO poner routing del usuario y cambiar esto
-        console.log(`El ID del usuario es: ${this.props.usuario._id}`);
-        console.log(`El ID de la oferta es: ${this.props.oferta._id}`);
+    añadirOfertaAUsuario = () =>{
+      
         //let o_id = new Meteor.Collection.ObjectID(this.props.usuario._id);
         Meteor.call('usuarios.insert.oferta', this.props.usuario._id, this.props.oferta._id);    
         this.props.fUpdate(this.props.oferta._id);    
@@ -74,7 +70,6 @@ export default class Oferta extends Component {
     render() {
         //TODO Terminar bien la visualizacion de la oferta, dejar el HTML bonito.
         const { oferta } = this.props; //Declaracion oferta = this.props.oferta
-        console.log("[Oferta] Render Data", oferta);
         const verMas = this.state.verMas;
         if (this.state.verMas) {
             return (
@@ -109,7 +104,7 @@ export default class Oferta extends Component {
                                         {this.checkUser()}
 
                                         <div className="col-3">
-                                            <button type="button" className="btn btn-warning" onClick={this.añadirOfertaAUsuario.bind(this)}> <i className="far fa-star"></i></button>
+                                            <button type="button" className="btn btn-warning" onClick={this.añadirOfertaAUsuario}> <i className="far fa-star"></i></button>
                                         </div>
                                         <div className="col-6">
                                             <button type="button" className="btn btn-info" onClick={this.handleVerMas.bind(this)}>Ver más</button>
@@ -149,7 +144,7 @@ export default class Oferta extends Component {
                                     <div className="row">
                                         {this.checkUser()}
                                         <div className="col-3">
-                                            <button type="button" className="btn btn-warning" onClick={this.añadirOfertaAUsuario.bind(this)}> <i className="far fa-star"></i></button>
+                                            <button type="button" className="btn btn-warning" onClick={this.añadirOfertaAUsuario}> <i className="far fa-star"></i></button>
                                         </div>
                                         <div className="col-6">
                                             <button type="button" className="btn btn-info" onClick={this.handleVerMas.bind(this)}>Ver más</button>
