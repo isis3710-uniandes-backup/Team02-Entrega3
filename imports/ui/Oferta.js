@@ -14,20 +14,18 @@ export default class Oferta extends Component {
     constructor(props) {
         super(props);
         this.handleVerMas = this.handleVerMas.bind(this);
-        this.state = {verMas: false};
-      }
-    
+        this.state = { verMas: false };
+    }
+
     handleVerMas() {
 
-        if(this.state.verMas==true)
-        {
-            this.setState({verMas: false})
+        if (this.state.verMas == true) {
+            this.setState({ verMas: false })
         }
-        else
-        {
-            this.setState({verMas: true})
+        else {
+            this.setState({ verMas: true })
         }
-        
+
     }
 
     // ? Elimina la oferta actual.
@@ -54,17 +52,26 @@ export default class Oferta extends Component {
         Meteor.call('usuarios.insert.oferta', this.props.usuario.nombre, this.props.oferta._id);
     }
 
-    verMas(){
+    verMas() {
         const { oferta } = this.props; //Declaracion oferta = this.props.oferta
-        
+
+    }
+
+    checkUser() {
+        if (this.props.usuario.nombre === this.props.oferta.usuario) {
+            return <div className="col-3">
+                <button type="button" className="btn btn-danger" onClick={this.deleteOferta.bind(this)}> <i className="fas fa-trash prefix grey-text"></i></button>
+            </div>;
+        } else {
+            return '';
+        }
     }
 
     render() {
         //TODO Terminar bien la visualizacion de la oferta, dejar el HTML bonito.
         const { oferta } = this.props; //Declaracion oferta = this.props.oferta
         const verMas = this.state.verMas;
-        if(this.state.verMas)
-        {
+        if (this.state.verMas) {
             return (
                 <div className="col-6">
                     <div className="card bg-secondary shadow m-3">
@@ -73,7 +80,7 @@ export default class Oferta extends Component {
                         </div>
                         <div className="card-body">
                             <ul className="list-group">
-                                
+
                                 <li className="list-group-item list-group-item-light"><strong>Descripcion:</strong> {oferta.descripcion} </li>
                                 <li className="list-group-item list-group-item-light"><strong>Ciudad:</strong> {oferta.ciudad} </li>
                                 <li className="list-group-item list-group-item-light"><strong>Salario mínimo:</strong> {oferta.salarioMin} </li>
@@ -84,8 +91,8 @@ export default class Oferta extends Component {
                                 <li className="list-group-item list-group-item-light"><strong>Experiencia:</strong> {oferta.experiencia} </li>
                                 <li className="list-group-item list-group-item-light"><strong>Nivel de Educación:</strong> {oferta.nivelEducacion} </li>
                                 <li className="list-group-item list-group-item-light"><strong>Tipo de Contrato:</strong> {oferta.tipoContrato} </li>
-    
-    
+
+
                             </ul>
                             <br></br>
                         </div>
@@ -93,9 +100,9 @@ export default class Oferta extends Component {
                             <div className="row">
                                 <div className="col-12">
                                     <div className="row">
-                                        <div className="col-3">
-                                            <button type="button" className="btn btn-danger" onClick={this.deleteOferta.bind(this)}> <i className="fas fa-trash prefix grey-text"></i></button>
-                                        </div>
+
+                                        {this.checkUser()}
+
                                         <div className="col-3">
                                             <button type="button" className="btn btn-warning" onClick={this.añadirOfertaAUsuario.bind(this)}> <i className="far fa-star"></i></button>
                                         </div>
@@ -108,12 +115,11 @@ export default class Oferta extends Component {
                         </div>
                     </div>
                 </div>
-    
-    
+
+
             );
         }
-        else
-        {
+        else {
 
             return (
                 <div className="col-6">
@@ -128,7 +134,7 @@ export default class Oferta extends Component {
                                 <li className="list-group-item list-group-item-light"><strong>Salario mínimo:</strong> {oferta.salarioMin} </li>
                                 <li className="list-group-item list-group-item-light"><strong>Salario máximo:</strong> {oferta.salarioMax} </li>
                                 <li className="list-group-item list-group-item-light"><strong>Carrera profesional:</strong> {oferta.carreraProfesional} </li>
-    
+
                             </ul>
                             <br></br>
                         </div>
@@ -136,9 +142,7 @@ export default class Oferta extends Component {
                             <div className="row">
                                 <div className="col-12">
                                     <div className="row">
-                                        <div className="col-3">
-                                            <button type="button" className="btn btn-danger" onClick={this.deleteOferta.bind(this)}> <i className="fas fa-trash prefix grey-text"></i></button>
-                                        </div>
+                                        {this.checkUser()}
                                         <div className="col-3">
                                             <button type="button" className="btn btn-warning" onClick={this.añadirOfertaAUsuario.bind(this)}> <i className="far fa-star"></i></button>
                                         </div>
@@ -151,11 +155,11 @@ export default class Oferta extends Component {
                         </div>
                     </div>
                 </div>
-    
-    
+
+
             );
 
         }
-        
+
     };
 }

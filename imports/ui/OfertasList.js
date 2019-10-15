@@ -80,7 +80,8 @@ class OfertasList extends Component {
                 "area": area,
                 "experiencia": experiencia,
                 "nivelEducacion": nivelEducacion,
-                "tipoContrato": tipoContrato
+                "tipoContrato": tipoContrato,
+                "usuario": this.props.usuario.nombre
             })
         }
         //Se limpian los valores del formulario
