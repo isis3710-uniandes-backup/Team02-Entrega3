@@ -10,6 +10,7 @@ import SignIn from './SignIn';
 import UsuarioOfertas from './UsuarioOfertas';
 import Inicio from './Inicio';
 import history from 'history';
+import OfertasBoard from './OfertasBoard';
 
 const browserHistory = history.createBrowserHistory();
 
@@ -30,7 +31,7 @@ Meteor.startup(() => {
 			<Route exact path="/" userf={this.handleAuth} component={Login} />
 			<Route path="/login" userf={this.handleAuth} component={Login} />
 			<Route path="/signin" component={SignIn} />
-			<Route path="/ofertas" component={OfertasList} />
+			<Route path="/ofertas" component={OfertasBoard} />
 			<Route path="/uofertas" component={UsuarioOfertas} />
 		</Router>,
 		document.getElementById('root')

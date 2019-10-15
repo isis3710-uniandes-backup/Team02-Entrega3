@@ -12,7 +12,7 @@ class FilterColumn extends Component {
             <div className="container-fluid">
                 <h2>Filtros de busqueda</h2>
                 <br></br>
-                <div className="card">
+                <div className="card shadow">
                     <div className="card-body">
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" placeholder="Buscar oferta" aria-label="Recipient's username" aria-describedby="basic-addon2"></input>
