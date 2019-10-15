@@ -3,6 +3,8 @@ import OfertasList from './OfertasList';
 import FilterColumn from './FilterColumn';
 
 class OfertasBoard extends Component {
+
+
     render() {
         return (
             <div>
@@ -32,7 +34,7 @@ class OfertasBoard extends Component {
                         <FilterColumn />
                     </div>
                     <div className="col-8">
-                        <OfertasList />
+                        <OfertasList usuario={this.props.history.location}/>
                     </div>
                 </div>
 
