@@ -6,11 +6,19 @@ import{ Router, Route, Link} from 'react-router-dom';
 
 import OfertasList from './OfertasList';
 import Login from './Login';
-import Inicio from './Inicio';
+import SignIn from './SignIn';
 import UsuarioOfertas from './UsuarioOfertas';
+import Inicio from './Inicio';
 import history from 'history'
 
 const browserHistory = history.createBrowserHistory();
+
+
+handleAuth = user => {
+    this.setState({
+        user: user
+    });
+};
 /**
  * Rutas del front
  */
@@ -20,8 +28,9 @@ const browserHistory = history.createBrowserHistory();
 Meteor.startup(()=>{
     render(
         <Router history={browserHistory}>
-            <Route exact path="/" component={Inicio}/>
-            <Route exact path="/login" component={Login}/>
+             <Route exact path="/" component={Inicio}/>
+            <Route exact path="/login" userf={this.handleAuth} component={Login}/>
+            <Route exact path="/signin" component={SignIn}/>
             <Route exact path="/ofertas" component={OfertasList}/>
             <Route exact path="/uofertas" component={UsuarioOfertas}/>
         </Router>,
