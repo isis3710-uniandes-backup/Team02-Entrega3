@@ -49,7 +49,8 @@ class Login extends Component {
 				pathname: '/ofertas',
 				correo: user_data.email,
 				_id: user_data._id,
-				nombre: user_data.nombre
+				nombre: user_data.nombre,
+				ofertas: user_data.ofertas
 			});
 	};
 
