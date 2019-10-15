@@ -4,7 +4,11 @@ import FilterColumn from './FilterColumn';
 
 class OfertasBoard extends Component {
 
+    getInput = a =>
+    {
+        
 
+    }
     render() {
         return (
             <div>
@@ -34,7 +38,7 @@ class OfertasBoard extends Component {
                         <FilterColumn />
                     </div>
                     <div className="col-8">
-                        <OfertasList usuario={this.props.history.location}/>
+                        <OfertasList usuario={this.props.history.location} search = {this.getInput}/>
                     </div>
                 </div>
 

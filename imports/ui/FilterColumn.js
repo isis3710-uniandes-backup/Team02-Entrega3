@@ -14,7 +14,7 @@ class FilterColumn extends Component {
                 <br></br>
                 <div className="card shadow">
                     <div className="card-body">
-                        <div className="input-group mb-3">
+                    <div className="input-group mb-3">
                             <input type="text" className="form-control" placeholder="Buscar oferta" aria-label="Recipient's username" aria-describedby="basic-addon2"></input>
                             <div className="input-group-append">
                                 <button className="btn btn-outline-primary" type="button"><i className="fas fa-search"></i></button>
@@ -47,7 +47,7 @@ class FilterColumn extends Component {
                             <div className="form-group">
                                 <div className="row">
                                     <div className="col-5">
-                                        <label htmlFor="sel1">Ciudad:</label>
+                                    <label htmlFor="sel1">Ciudad:</label>
                                     </div>
                                     <div className="col-7">
                                         <select className="form-control" id="sel1">
@@ -64,7 +64,7 @@ class FilterColumn extends Component {
                             <div className="form-group">
                                 <div className="row">
                                     <div className="col-5">
-                                        <label htmlFor="sel2">Nivel de educación:</label>
+                                    <label htmlFor="sel2">Nivel de educación:</label>
                                     </div>
                                     <div className="col-7">
                                         <select className="form-control" id="sel2">
