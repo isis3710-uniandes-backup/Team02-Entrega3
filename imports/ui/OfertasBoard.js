@@ -15,6 +15,10 @@ class OfertasBoard extends Component {
 		favoritos: 0
 	};
 
+	updateUser = (x) => {
+		this.props.history.location.ofertas.push(x);
+	};
+
 	componentDidMount() {
 		console.log(this.props);
 		console.log(this.props.history.location.correo);
@@ -48,7 +52,7 @@ class OfertasBoard extends Component {
 						<FilterColumn />
 					</div>
 					<div className="col-8">
-						<OfertasList usuario={this.props.history.location} />
+						<OfertasList usuario={this.props.history.location} fUpdate={this.updateUser}/>
 					</div>
 				</div>
 			);

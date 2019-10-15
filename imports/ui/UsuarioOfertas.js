@@ -49,27 +49,22 @@ class UsuarioOfertas extends Component {
         // ! Atencion: Debido a que falta los datos del usuario para pasarselo por el props. Esto se explota.
         // ! Se deja un usuario de prueba.
 
-        let ofertas = this.props.ofertas; //Accede a las ofertas definidas en la DB, obtenidas por withTracker().        
-        console.log("[UsuarioOfertas] Ofertas obtenidas por withTracker", ofertas);
+        let ofertas = this.props.ofertas; //Accede a las ofertas definidas en la DB, obtenidas por withTracker().                
         // ? Comentario Personal: Meteor se explota con cualquier undefined y no compila nada :'( incluso en consultas de tipo (if a === undefined).
         //TODO Pasar la informacion del usuario cuando se conecta y deshabilitar el user de prueba.       
 
-        let uOfertas = this.state.user.ofertas;
-        console.log("[UsuarioOfertas] Ofertas del state", uOfertas); 
+        let uOfertas = this.state.user.ofertas;        
         console.log("[UsuarioOfertas] Propiedades", this.props);        
         let respuesta = []; //Componentes.
 
         for (let i of uOfertas) { //Ofertas del usuario.
-            for (let j of ofertas) { //Ofertas totales.
-                console.log("Datos de i", i._str);
-                console.log("Solo i", i);
-                console.log("Solo j", j);
+            for (let j of ofertas) { //Ofertas totales.                
                 if (i === j._id) {
-                    respuesta.push(<Oferta key={j._id} oferta={j} principal={false} delete={this.deleteOferta} usuario={this.props.usuario}/>);
+                    respuesta.push(<Oferta key={j._id} oferta={j} principal={false} delete={this.deleteOferta} usuario={this.props.usuario} fUpdate={this.props.fUpdate}/>);
                 }
             }
         }
-
+        
         return respuesta; //Arreglo con los componentes.
     }
     

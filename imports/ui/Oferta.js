@@ -52,7 +52,8 @@ export default class Oferta extends Component {
         console.log(`El ID del usuario es: ${this.props.usuario._id}`);
         console.log(`El ID de la oferta es: ${this.props.oferta._id}`);
         //let o_id = new Meteor.Collection.ObjectID(this.props.usuario._id);
-        Meteor.call('usuarios.insert.oferta', this.props.usuario._id, this.props.oferta._id);
+        Meteor.call('usuarios.insert.oferta', this.props.usuario._id, this.props.oferta._id);    
+        this.props.fUpdate(this.props.oferta._id);    
     }
 
     verMas() {
