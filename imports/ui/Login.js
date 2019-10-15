@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Usuarios } from '../api/usuarios';
 import { withTracker } from 'meteor/react-meteor-data';
-//import image from '../data/icon.png';
 
 class Login extends Component {
 	/**
@@ -78,6 +77,7 @@ class Login extends Component {
 							<div className="container-fluid justify-content-center">
 								<h1 className="text-center mb4">Job Searcher</h1>
 								<img
+									src="https://www.scambs.gov.uk/media/12178/jobs.png"
 									alt="logo"
 									className="rounded mx-auto d-block "
 									height="60%"
