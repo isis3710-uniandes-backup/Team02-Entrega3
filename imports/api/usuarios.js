@@ -39,7 +39,6 @@ Meteor.methods({
     // ? El parametro usuario es un diccionario con la estructura de los datos de usuario.
     'usuarios.insert'(usuario) {
         //Ejecutar la accion en la base de datos sobre la colleccion.
-        console.log(usuario);
         Usuarios.insert(usuario);
     },
 
@@ -78,6 +77,7 @@ Meteor.methods({
 
         //Agregar la nueva id al arreglo.
         let uOfertas = usuario.ofertas;
+        console.log(uOfertas);
         uOfertas.push(ofertaID);
         console.log(`Las ofertas del usuario ${usuarioID} son: ${uOfertas}`);
 
