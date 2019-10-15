@@ -10,6 +10,9 @@ import OfertasList from './OfertasList';
 export default class Oferta extends Component {
     // ! En las siguientes funciones se establece la llamada a las operaciones CRUD declaradas en el API.
     // ! Aqui se incluyen las diferentes opciones que no son parte del Retrieve en el CRUD.
+<<<<<<< HEAD
+    
+=======
 
     constructor(props) {
         super(props);
@@ -30,6 +33,7 @@ export default class Oferta extends Component {
         
     }
 
+>>>>>>> 848f8ba3dd2ac509899fe9a67e2953cbc18415ea
     // ? Elimina la oferta actual.
     deleteOferta = () => {
         if (this.props.principal) {
@@ -49,7 +53,10 @@ export default class Oferta extends Component {
     };
 
     añadirOfertaAUsuario() {
-
+        //TODO poner routing del usuario y cambiar esto
+        console.log(this.props.usuario._id);
+        let o_id = new Meteor.Collection.ObjectID(this.props.usuario._id);
+        Meteor.call('usuarios.insert.oferta', o_id, this.props.oferta._id);
     }
 
     verMas(){

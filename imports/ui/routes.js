@@ -14,18 +14,19 @@ import OfertasBoard from './OfertasBoard';
 
 const browserHistory = history.createBrowserHistory();
 
-handleAuth = user => {
-	this.setState({
-		user: user
-	});
-};
+
 /**
  * Rutas del front
  */
 
-//TODO Arreglar el router para que no se solapen los componentes.
 
 Meteor.startup(() => {
+
+    handleAuth = user => {
+    this.setState({
+        user: user
+    });
+};
 	render(
 		<Router history={browserHistory}>
 			<Route exact path="/" userf={this.handleAuth} component={Login} />

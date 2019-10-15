@@ -26,8 +26,12 @@ class OfertasList extends Component {
         //TODO Refactorizar el codigo de las ofertas para que quede bonito.
         let ofertas = this.props.ofertas; //Accede a las ofertas definidas en la DB, obtenidas por withTracker().
         return ofertas.map(elemento => {
-            return (<Oferta key={elemento._id} oferta={elemento} principal={true} />); //Renderizar cada una de las ofertas.
+            return (<Oferta key={elemento._id} oferta={elemento} principal={true} usuario={this.props.history.location}/>); //Renderizar cada una de las ofertas.
         });
+    }
+
+    componentDidMount(){
+        console.log("props",this.props.history.location);
     }
 
     handleClickAgregarOferta = () => {
