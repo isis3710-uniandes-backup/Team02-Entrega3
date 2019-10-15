@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import OfertasList from './OfertasList';
 import FilterColumn from './FilterColumn';
 import UsuarioOfertas from './UsuarioOfertas';
+import Usuario from './Usuario';
 
 class OfertasBoard extends Component {
 	logOut = () => {
@@ -11,7 +12,7 @@ class OfertasBoard extends Component {
 	};
 
 	state = {
-		favoritos: false
+		favoritos: 0
 	};
 
 	componentDidMount() {
@@ -27,8 +28,20 @@ class OfertasBoard extends Component {
 		this.setState({ favoritos: false });
 	};
 
+	changeFavoritos = () => {
+		this.setState({ favoritos: 1 });
+	};
+
+	changeHome = () => {
+		this.setState({ favoritos: 0 });
+	};
+
+	changeCuenta = () => {
+		this.setState({ favoritos: 2 });
+	};
+
 	showFavoritos = () => {
-		if (this.state.favoritos == false) {
+		if (this.state.favoritos == 0) {
 			return (
 				<div className="row">
 					<div className="col-4">
@@ -39,11 +52,19 @@ class OfertasBoard extends Component {
 					</div>
 				</div>
 			);
-		} else {
+		} else if (this.state.favoritos == 1) {
 			return (
 				<div className="row">
 					<div className="col-12">
 						<UsuarioOfertas usuario={this.props.history.location} />
+					</div>
+				</div>
+			);
+		} else {
+			return (
+				<div className="row">
+					<div className="col-12">
+						<Usuario user={this.props.history.location} />
 					</div>
 				</div>
 			);
@@ -73,14 +94,10 @@ class OfertasBoard extends Component {
 							<a className="nav-item nav-link active" onClick={this.changeHome}>
 								Home <span className="sr-only">(current)</span>
 							</a>
-							<a
-								className="nav-item nav-link"
-								href=""
-								onClick={this.changeFavoritos}
-							>
+							<a className="nav-item nav-link" onClick={this.changeFavoritos}>
 								Favoritos
 							</a>
-							<a className="nav-item nav-link" href="">
+							<a className="nav-item nav-link" onClick={this.changeCuenta}>
 								Mi Cuenta
 							</a>
 						</div>
