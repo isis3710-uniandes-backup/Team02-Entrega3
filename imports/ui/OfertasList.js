@@ -99,7 +99,21 @@ class OfertasList extends Component {
     render() {
         return (
             <div className="container-fluid">
-                <h2 className="justify-content-center"> Ofertas Laborales </h2>
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-8">
+                            <h2 className="justify-content-center"> Ofertas Laborales </h2>
+                        </div>
+                        <div className="col-4">
+                            <div className="row float-right">
+                                <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#modalAgregarOferta" onClick={this.handleClickAgregarOferta}>
+                                    Agregar oferta
+                            </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div className="container-fluid">
                     <div className="row">
 
@@ -107,11 +121,6 @@ class OfertasList extends Component {
 
                     </div>
                 </div>
-
-
-                <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#modalAgregarOferta" onClick={this.handleClickAgregarOferta}>
-                    Agregar oferta
-                </button>
 
                 <div className="modal fade" id="modalAgregarOferta" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div className="modal-dialog" role="document">
@@ -177,6 +186,7 @@ class OfertasList extends Component {
                                         <input type="number" name="salarioMaximo" className="form-control" id="inputSalarioMaximo"
                                             placeholder="Ej: 2000"></input>
                                     </div>
+                                    <hr></hr>
                                     <div className="row">
                                         <div className="col-6">
                                             <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancelar</button>

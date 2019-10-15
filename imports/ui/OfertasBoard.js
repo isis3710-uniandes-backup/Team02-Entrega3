@@ -19,6 +19,12 @@ class OfertasBoard extends Component {
                             <a className="nav-item nav-link" href="#">Mi Cuenta</a>
                         </div>
                     </div>
+                    <div>
+                        <button className="btn-danger">
+                            Log Out
+                        </button>
+                    </div>
+
                 </nav>
                 <br></br>
                 <div className="row">
