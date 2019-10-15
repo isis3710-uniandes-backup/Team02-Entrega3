@@ -4,10 +4,19 @@ import FilterColumn from './FilterColumn';
 
 class OfertasBoard extends Component {
 
-    getInput = a =>
+    getInput = (searchVar,ciudadV,educacionV, salarioMaximoV, salarioMinimoV) =>
     {
-        
-
+        this.setState({search: searchVar});
+        this.setState({ciudad: ciudadV});
+        this.setState({educacion: educacionV});
+        this.setState({salarioMaximo: salarioMaximoV});
+        this.setState({salarioMinimo: salarioMinimoV});
+        console.log("llego al get input");
+        console.log(salarioMinimoV);
+    }
+    state = {
+        search: ''
+       
     }
     render() {
         return (
@@ -35,10 +44,12 @@ class OfertasBoard extends Component {
                 <br></br>
                 <div className="row">
                     <div className="col-4">
-                        <FilterColumn />
+                        <FilterColumn searchCallback = {this.getInput}/>
                     </div>
                     <div className="col-8">
-                        <OfertasList usuario={this.props.history.location} search = {this.getInput}/>
+                        <OfertasList usuario={this.props.history.location} searchProp ={this.state.search} ciudadProp ={this.state.ciudad} educacionProp ={this.state.educacion} 
+                        salarioMaximoProp ={this.state.salarioMaximo} salarioMinimoProp ={this.state.salarioMinimo}
+                        />
                     </div>
                 </div>
 
