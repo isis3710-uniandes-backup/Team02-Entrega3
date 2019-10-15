@@ -9,8 +9,7 @@ export default class Usuario extends Component {
     // ! Este componente debe recibir la informacion del usuario por medio del props.
     // ! El diccionario debe llamarse user.   
     render() {
-        let data = this.props.user; //Datos del usuario. 
-        console.log(this.props.user);       
+        let data = this.props.user; //Datos del usuario.      
         return(
             <div className="container-fluid card justify-content-center">
                 <div className="row">

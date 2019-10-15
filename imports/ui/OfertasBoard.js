@@ -5,17 +5,28 @@ import UsuarioOfertas from './UsuarioOfertas';
 import Usuario from './Usuario';
 
 class OfertasBoard extends Component {
+	logOut = () => {
+		this.props.history.push({
+			pathname: '/'
+		});
+	};
 
     state = {
         favoritos : 0
     }
 
-    componentDidMount(){
-        console.log(this.props);
-        console.log(this.props.history.location.correo);
+	componentDidMount() {
+		console.log(this.props);
+		console.log(this.props.history.location.correo);
+	}
 
+	changeFavoritos = () => {
+		this.setState({ favoritos: true });
+	};
 
-    }
+	changeHome = () => {
+		this.setState({ favoritos: false });
+	};
 
     changeFavoritos = ()=>{
         this.setState({favoritos: 1});
