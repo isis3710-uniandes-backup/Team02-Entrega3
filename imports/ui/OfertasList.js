@@ -63,11 +63,9 @@ class OfertasList extends Component {
           
         
         return ofertas.map(elemento => {
-            return (<Oferta key={elemento._id} oferta={elemento} principal={true} usuario={this.props.usuario}/>); //Renderizar cada una de las ofertas.
+            return (<Oferta key={elemento._id} oferta={elemento} principal={true} usuario={this.props.usuario} fUpdate={this.props.fUpdate}/>); //Renderizar cada una de las ofertas.
         });
-    }
-
-    
+    }    
 
     handleClickAgregarOferta = () => {
         $('#modalAgregarOferta').modal('show');
@@ -110,13 +108,14 @@ class OfertasList extends Component {
                 "ciudad": ciudad,
                 "nombre": nombreOferta,
                 "descripcion": descripcion,
-                "CarreraProfesional": carreraProfesional,
+                "carreraProfesional": carreraProfesional,
                 "fechaPublicacion": new Date(),
                 "fechaExpiracion": fechaExpiracion,
                 "area": area,
                 "experiencia": experiencia,
                 "nivelEducacion": nivelEducacion,
-                "tipoContrato": tipoContrato
+                "tipoContrato": tipoContrato,
+                "usuario": this.props.usuario.nombre
             })
         }
         //Se limpian los valores del formulario

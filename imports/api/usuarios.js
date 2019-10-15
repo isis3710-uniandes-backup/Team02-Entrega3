@@ -46,32 +46,32 @@ Meteor.methods({
     // ? Elimina a un usuario de la aplicacion
     'usuarios.remove'(usuarioID) {
         //Busca la oferta para eliminarla
-        const usuario = Usuarios.findOne(usuarioID); //Obtiene el documento de la oferta dada su ID
+        const usuario = Usuarios.findOne({ _id : usuarioID}); //Obtiene el documento de la oferta dada su ID
         if (usuario ===  undefined || usuario === null) {
             throw new Meteor.Error(`[Usuarios] Lo sentimos el usuario con ID: ${usuarioID} no existe.`);
         }
         //Borrar la oferta.
-        Usuarios.remove(usuarioID);
+        Usuarios.remove({ _id : usuarioID});
     },
 
     // ? Actualiza la informacion de un usuario.
     'usuarios.update'(usuarioID, bUsuario) {
-        const usuario = Usuarios.findOne(usuarioID); //Obtiene el documento de la oferta dada su ID
+        const usuario = Usuarios.findOne({ _id : usuarioID}); //Obtiene el documento de la oferta dada su ID
         if (usuario ===  undefined || usuario === null) {
             throw new Meteor.Error(`[Usuarios] Lo sentimos el usuario con ID: ${usuarioID} no existe.`);
         }
 
-        Usuarios.update(usuarioID, {$set: bUsuario}, {returnNewDocument: true});
+        Usuarios.update({ _id : usuarioID}, {$set: bUsuario}, {returnNewDocument: true});
     },
 
     // ? Asocia una oferta laboral con un usuario cuando es de su preferencia.
     'usuarios.insert.oferta'(usuarioID, ofertaID) {
-        const usuario = Usuarios.findOne(usuarioID); //Obtiene el documento de la oferta dada su ID
+        const usuario = Usuarios.findOne({ _id : usuarioID}); //Obtiene el documento de la oferta dada su ID
         if (usuario ===  undefined || usuario === null) {
             throw new Meteor.Error(`[Usuarios] Lo sentimos el usuario con ID: ${usuarioID} no existe.`);
         }
 
-        const oferta = Ofertas.findOne(ofertaID); //Obtiene el documento de la oferta dada su ID
+        const oferta = Ofertas.findOne({ _id: ofertaID}); //Obtiene el documento de la oferta dada su ID
         if (oferta ===  undefined || oferta === null) {
             throw new Meteor.Error(`[Ofertas] Lo sentimos la oferta laboral con ID: ${ofertaID} no existe.`);
         }
@@ -82,13 +82,13 @@ Meteor.methods({
         console.log(`Las ofertas del usuario ${usuarioID} son: ${uOfertas}`);
 
         //Actualizar
-        Usuarios.update(usuarioID, {$set: {ofertas: uOfertas}}, {returnNewDocument: true});
+        Usuarios.update({_id : usuarioID}, {$set: {ofertas: uOfertas}}, {returnNewDocument: true});
     },
     
     // ? Elimina una oferta laboral favorita de un usuario.
 
     'usuarios.remove.oferta'(usuarioID, ofertaID) {
-        const usuario = Usuarios.findOne(usuarioID); //Obtiene el documento de la oferta dada su ID
+        const usuario = Usuarios.findOne({_id : usuarioID}); //Obtiene el documento de la oferta dada su ID
         if (usuario ===  undefined || usuario === null) {
             throw new Meteor.Error(`[Usuarios] Lo sentimos el usuario con ID: ${usuarioID} no existe.`);
         }      
@@ -98,6 +98,6 @@ Meteor.methods({
         console.log(`Las ofertas del usuario ${usuarioID} son: ${uOfertas}`);
 
         //Actualizar
-        Usuarios.update(usuarioID, {$set: {ofertas: uOfertas}}, {returnNewDocument: true});
+        Usuarios.update({_id : usuarioID}, {$set: {ofertas: uOfertas}}, {returnNewDocument: true});
     },    
 });

@@ -25,12 +25,16 @@ class UsuarioOfertas extends Component {
         //! Si desea hacer pruebas que el _id corresponda a un usuario en la base de datos al igual que el tag de la oferta.
 
         user : { 
-            "_id" : "5da47c6abb92e0707f99fb43",
-            "nombre": "Andres Lopez",
-            "email": "example@example.com",
-            "password": "test",
-            "ofertas": ["5da4794dbb92e0707f99fb42"]
+            "_id" : this.props.usuario._id,
+            "nombre": this.props.usuario.nombre,
+            "email": this.props.usuario.email,
+            "password": this.props.usuario.password,
+            "ofertas": this.props.usuario.ofertas
         }
+    };
+
+    componentDidMount() {
+        console.log("Propiedades", this.props);
     };
 
     deleteOferta = (ofertaId) => {
@@ -45,29 +49,30 @@ class UsuarioOfertas extends Component {
         // ! Atencion: Debido a que falta los datos del usuario para pasarselo por el props. Esto se explota.
         // ! Se deja un usuario de prueba.
 
-        let ofertas = this.props.ofertas; //Accede a las ofertas definidas en la DB, obtenidas por withTracker().        
+        let ofertas = this.props.ofertas; //Accede a las ofertas definidas en la DB, obtenidas por withTracker().                
         // ? Comentario Personal: Meteor se explota con cualquier undefined y no compila nada :'( incluso en consultas de tipo (if a === undefined).
         //TODO Pasar la informacion del usuario cuando se conecta y deshabilitar el user de prueba.       
 
         let uOfertas = this.state.user.ofertas;        
+        console.log("[UsuarioOfertas] Propiedades", this.props);        
         let respuesta = []; //Componentes.
 
         for (let i of uOfertas) { //Ofertas del usuario.
-            for (let j of ofertas) { //Ofertas totales.
-                if (i === j._id._str) {
-                    respuesta.push(<Oferta key={j._id} oferta={j} principal={false} delete={this.deleteOferta}/>);
+            for (let j of ofertas) { //Ofertas totales.                
+                if (i === j._id) {
+                    respuesta.push(<Oferta key={j._id} oferta={j} principal={false} delete={this.deleteOferta} usuario={this.props.usuario} fUpdate={this.props.fUpdate}/>);
                 }
             }
         }
-
+        
         return respuesta; //Arreglo con los componentes.
     }
     
     render() {
         return (
             <div className="container-fluid">
-                <h4 className="justify-content-center"> Ofertas Laborales </h4>
-                <ul>{this.renderOfertas()}</ul>
+                <h4 className="justify-content-center"> Mis ofertas </h4>
+                {this.renderOfertas()}
             </div>
         );
     };
