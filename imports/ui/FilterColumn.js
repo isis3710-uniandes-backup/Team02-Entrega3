@@ -14,10 +14,10 @@ class FilterColumn extends Component {
                 <br></br>
                 <div className="card shadow">
                     <div className="card-body">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Buscar oferta" aria-label="Recipient's username" aria-describedby="basic-addon2"></input>
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-primary" type="button"><i class="fas fa-search"></i></button>
+                        <div className="input-group mb-3">
+                            <input type="text" className="form-control" placeholder="Buscar oferta" aria-label="Recipient's username" aria-describedby="basic-addon2"></input>
+                            <div className="input-group-append">
+                                <button className="btn btn-outline-primary" type="button"><i className="fas fa-search"></i></button>
                             </div>
                         </div>
                         <hr></hr>
@@ -47,7 +47,7 @@ class FilterColumn extends Component {
                             <div className="form-group">
                                 <div className="row">
                                     <div className="col-5">
-                                        <label for="sel1">Ciudad:</label>
+                                        <label htmlFor="sel1">Ciudad:</label>
                                     </div>
                                     <div className="col-7">
                                         <select className="form-control" id="sel1">
@@ -64,7 +64,7 @@ class FilterColumn extends Component {
                             <div className="form-group">
                                 <div className="row">
                                     <div className="col-5">
-                                        <label for="sel2">Nivel de educación:</label>
+                                        <label htmlFor="sel2">Nivel de educación:</label>
                                     </div>
                                     <div className="col-7">
                                         <select className="form-control" id="sel2">
@@ -75,6 +75,12 @@ class FilterColumn extends Component {
                                         </select>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <hr></hr>
+                        <div className="row float-right">
+                            <div className="col-12">
+                                <button className="btn btn-success" type="button"><i class="fas fa-filter"></i> Filtrar ofertas</button>
                             </div>
                         </div>
 
