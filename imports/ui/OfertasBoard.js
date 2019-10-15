@@ -9,7 +9,7 @@ class OfertasBoard extends Component {
         return (
             <div>
 
-                <nav className="navbar navbar-expand-lg navbar-dark bg-info">
+                <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-info">
                     <a className="navbar-brand" href="#">Jobs Search</a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
