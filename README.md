@@ -24,6 +24,10 @@ Buscador de ofertas laborales.
 
 ---
 
+## Video Propuesta
+https://www.youtube.com/watch?v=kxYBCXr3XhI&feature=youtu.be
+
+---
 ## Video
 
 https://youtu.be/WZip8kPdl-A
