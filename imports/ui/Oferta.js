@@ -29,44 +29,50 @@ export default class Oferta extends Component {
         Meteor.call('ofertas.update', this.props.oferta._id, update); //Actualiza la oferta actual en la DB.
     };
 
+    añadirOfertaAUsuario() {
+
+    }
+
     render() {
         //TODO Terminar bien la visualizacion de la oferta, dejar el HTML bonito.
         const { oferta } = this.props; //Declaracion oferta = this.props.oferta
         return (
+            <div className="col-6">
+                <div className="card bg-secondary shadow m-3">
+                    <div className="card-header">
+                        <div className="row justify-content-center"><h2 className="card-title text-white">{oferta.nombre}</h2></div>
+                    </div>
+                    <div className="card-body">
+                        <ul className="list-group">
+                            <li className="list-group-item list-group-item-light"><strong>Descripcion:</strong> {oferta.descripcion} </li>
+                            <li className="list-group-item list-group-item-light"><strong>Ciudad:</strong> {oferta.ciudad} </li>
+                            <li className="list-group-item list-group-item-light"><strong>Salario mínimo:</strong> {oferta.salarioMin} </li>
+                            <li className="list-group-item list-group-item-light"><strong>Salario máximo:</strong> {oferta.salarioMax} </li>
+                            <li className="list-group-item list-group-item-light"><strong>Carrera profesional:</strong> {oferta.carreraProfesional} </li>
 
-            <div className="card bg-secondary shadow">
-                <div className="card-header">
-                    <div className="row justify-content-center"><h2 className="card-title text-white">{oferta.nombre}</h2></div>
-                </div>
-                <div className="card-body">
-                    <ul className="list-group">
-                        <li className="list-group-item list-group-item-light"><strong>Descripcion:</strong> {oferta.descripcion} </li>
-                        <li className="list-group-item list-group-item-light"><strong>Ciudad:</strong> {oferta.ciudad} </li>
-                        <li className="list-group-item list-group-item-light"><strong>Salario mínimo:</strong> {oferta.salarioMin} </li>
-                        <li className="list-group-item list-group-item-light"><strong>Salario máximo:</strong> {oferta.salarioMax} </li>
-                        <li className="list-group-item list-group-item-light"><strong>Carrera profesional:</strong> {oferta.carreraProfesional} </li>
-
-                    </ul>
-                    <br></br>
-                </div>
-                <div className="card-footer">
-                    <div className="row">
-                        <div className="col-10">
-                            <div className="row">
-                                <div className="col-3">
-                                    <button type="button" className="btn btn-danger" onClick={this.deleteOferta.bind(this)}> <i className="fas fa-trash prefix grey-text"></i></button>
-                                </div>
-                                <div className="col-3">
-                                    <button type="button" className="btn btn-warning" > <i class="far fa-star"></i></button>
-                                </div>
-                                <div className="col-6">
-                                    <button type="button" className="btn btn-info" >Ver más</button>
+                        </ul>
+                        <br></br>
+                    </div>
+                    <div className="card-footer">
+                        <div className="row">
+                            <div className="col-12">
+                                <div className="row">
+                                    <div className="col-3">
+                                        <button type="button" className="btn btn-danger" onClick={this.deleteOferta.bind(this)}> <i className="fas fa-trash prefix grey-text"></i></button>
+                                    </div>
+                                    <div className="col-3">
+                                        <button type="button" className="btn btn-warning" onClick={this.añadirOfertaAUsuario.bind(this)}> <i class="far fa-star"></i></button>
+                                    </div>
+                                    <div className="col-6">
+                                        <button type="button" className="btn btn-info" >Ver más</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
 
         );
     };
