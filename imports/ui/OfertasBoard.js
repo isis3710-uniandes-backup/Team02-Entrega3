@@ -59,8 +59,8 @@ class OfertasBoard extends Component {
         </div>
         }
         else{
-            return <div className="row">
-            <div className="col-12">
+            return <div className="row justify-content-center">
+            <div className="col-3">
                 <Usuario user={this.props.history.location}/>
             </div>
         </div>
