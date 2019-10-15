@@ -114,9 +114,7 @@ class OfertasBoard extends Component {
 		return (
 			<div>
 				<nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-info">
-					<a className="navbar-brand" href="#">
-						Jobs Search
-					</a>
+					<a className="navbar-brand">Jobs Search</a>
 					<button
 						className="navbar-toggler"
 						type="button"
@@ -130,7 +128,7 @@ class OfertasBoard extends Component {
 					</button>
 					<div className="collapse navbar-collapse" id="navbarNavAltMarkup">
 						<div className="navbar-nav">
-							<a className="nav-item nav-link active" onClick={this.changeHome}>
+							<a className="nav-item nav-link" onClick={this.changeHome}>
 								Home <span className="sr-only">(current)</span>
 							</a>
 							<a className="nav-item nav-link" onClick={this.changeFavoritos}>
@@ -142,7 +140,7 @@ class OfertasBoard extends Component {
 						</div>
 					</div>
 					<div>
-						<button className="btn-danger" onClick={this.logOut}>
+						<button className="btn btn-danger" onClick={this.logOut}>
 							Log Out
 						</button>
 					</div>
