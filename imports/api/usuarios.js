@@ -40,6 +40,13 @@ Meteor.methods({
     'usuarios.insert'(usuario) {
         //Ejecutar la accion en la base de datos sobre la colleccion.
         console.log(usuario);
+
+        //El bendito Meteor Mongo sobre escribe el metodo insert y no genera un ObjectID.
+        let o_id = new Meteor.Collection.ObjectID();
+
+        //Agregar el campo.
+        usuario["_id"] = o_id;
+
         Usuarios.insert(usuario);
     },
 
