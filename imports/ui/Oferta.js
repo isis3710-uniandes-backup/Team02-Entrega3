@@ -10,9 +10,6 @@ import OfertasList from './OfertasList';
 export default class Oferta extends Component {
     // ! En las siguientes funciones se establece la llamada a las operaciones CRUD declaradas en el API.
     // ! Aqui se incluyen las diferentes opciones que no son parte del Retrieve en el CRUD.
-<<<<<<< HEAD
-    
-=======
 
     constructor(props) {
         super(props);
