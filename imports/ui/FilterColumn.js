@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 
 class FilterColumn extends Component {
 
-    componentDidMount() {
-        //Buscar ciudades Colombia
-
-    }
 
     state = {
         search: '',
@@ -22,8 +18,6 @@ class FilterColumn extends Component {
         var educacionV = document.getElementById("educacion").value;
         var salarioMaximoV = document.getElementById("inputSalarioMaximo").value;
         var salarioMinimoV = document.getElementById("inputSalarioMinimo").value;
-        console.log("llego aca");
-        console.log(educacionV);
 
         this.setState({search: searchVar});
         this.setState({ciudad: ciudadV});
@@ -108,7 +102,7 @@ class FilterColumn extends Component {
                         <hr></hr>
                         <div className="row float-right">
                             <div className="col-12">
-                                <button className="btn btn-success" type="button" onClick={this.mandarSearch}><i class="fas fa-filter"></i> Filtrar ofertas</button>
+                                <button className="btn btn-success" type="button" onClick={this.mandarSearch}><i className="fas fa-filter"></i> Filtrar ofertas</button>
                             </div>
                         </div>
 

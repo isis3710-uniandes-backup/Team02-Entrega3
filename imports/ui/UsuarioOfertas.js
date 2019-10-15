@@ -71,7 +71,7 @@ class UsuarioOfertas extends Component {
     render() {
         return (
             <div className="container-fluid">
-                <h4 className="justify-content-center"> Mis ofertas </h4>
+                <h2 className="justify-content-center"> Mis ofertas </h2>
                 {this.renderOfertas()}
             </div>
         );
