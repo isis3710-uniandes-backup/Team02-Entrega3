@@ -74,8 +74,8 @@ class OfertasList extends Component {
                 "CarreraProfesional": carreraProfesional,
                 "fechaPublicacion": new Date(),
                 "fechaExpiracion": fechaExpiracion,
-                "Area": area,
-                "Experiencia": experiencia,
+                "area": area,
+                "experiencia": experiencia,
                 "nivelEducacion": nivelEducacion,
                 "tipoContrato": tipoContrato
             })
