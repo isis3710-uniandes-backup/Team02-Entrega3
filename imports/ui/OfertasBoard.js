@@ -73,10 +73,14 @@ class OfertasBoard extends Component {
 							<a className="nav-item nav-link active" onClick={this.changeHome}>
 								Home <span className="sr-only">(current)</span>
 							</a>
-							<a className="nav-item nav-link" onClick={this.changeFavoritos}>
+							<a
+								className="nav-item nav-link"
+								href=""
+								onClick={this.changeFavoritos}
+							>
 								Favoritos
 							</a>
-							<a className="nav-item nav-link" href="#">
+							<a className="nav-item nav-link" href="">
 								Mi Cuenta
 							</a>
 						</div>
