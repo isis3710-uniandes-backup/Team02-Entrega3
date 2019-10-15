@@ -99,10 +99,12 @@ class OfertasList extends Component {
     render() {
         return (
             <div className="container-fluid">
-                <h4 className="justify-content-center"> Ofertas Laborales </h4>
+                <h2 className="justify-content-center"> Ofertas Laborales </h2>
                 <div className="container-fluid">
-                    <div className="card-columns">
+                    <div className="row">
+
                         {this.renderOfertas()}
+
                     </div>
                 </div>
 
