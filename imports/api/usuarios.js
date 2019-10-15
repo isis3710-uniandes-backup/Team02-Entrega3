@@ -35,16 +35,11 @@ if (Meteor.isServer) {
 //! Sea de Tipo ObjectID - generalmente esta en la propiedad _id del documento.
 
 Meteor.methods({
-
+    
     // ? El parametro usuario es un diccionario con la estructura de los datos de usuario.
     'usuarios.insert'(usuario) {
-        
-        // Seguridad para la acción.
-        if (!this.userId) {
-            throw new Meteor.Error('[Usuarios] Usuario No Autorizado');
-        }
-
         //Ejecutar la accion en la base de datos sobre la colleccion.
+        console.log(usuario);
         Usuarios.insert(usuario);
     },
 

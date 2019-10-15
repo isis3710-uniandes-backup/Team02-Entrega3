@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-
+import {Usuarios} from '../api/usuarios';
+import { withTracker } from 'meteor/react-meteor-data';
 
 class Login extends Component {
 
@@ -12,6 +12,43 @@ class Login extends Component {
 		uname: "",
 		upass: ""
 	}
+
+	clickSignIn = () => {
+		this.props.history.push({
+			pathname: '/signin'
+		})
+	}
+
+	getLogData = (user, pass) => {
+		try {  for(let i = 0;i<this.props.usuarios.length;i++){
+			if(this.props.usuarios[i].nombre==user && this.props.usuarios[i].password==pass){
+				return this.props.usuarios[i];
+			}
+		}}
+		catch (error) { console.error(`Error fatal trayendo los datos del login: ${error}`) }
+	};
+
+	clickLog = async (event) => {
+		//* Actualizar el componente sin dar refresh		
+		event.preventDefault();
+
+		if (this.state.uname.length === 0) return alert("Please enter your username");
+		if (this.state.upass.length === 0) return alert("Please enter your password");
+
+		//* Llamar al backend: Peticion traer los datos de inicio de sesión.
+		//* Llamada al backend con axios.
+
+		let res = this.getLogData(this.state.uname, this.state.upass)
+			let data = res;
+			if (data === undefined) return alert("The email and password doesn't match with any registered user, check the credentials");
+
+			//* Actualizar el nombre de usuario con el estado padre.
+			let user_data = data; //Datos del usuario.
+			this.props.history.push({ //* Actualizar la vista.
+				pathname: '/ofertas',
+				correo: user_data.mail
+			});
+	};
 
 
 
@@ -36,8 +73,8 @@ class Login extends Component {
 								<input type="password" name="uPass" className="form-control" id="userPass" placeholder="User's account password" onChange={(evt) => this.setState({ upass: evt.target.value })} required />
 							</div>
 							<div className="row justify-content-center">
-								<button type="button"  className="btn btn-primary m-3"> Log In </button>
-								<button type="button"  className="btn btn-secondary m-3">Register</button>
+								<button type="button" onClick={this.clickLog} className="btn btn-primary m-3"> Log In </button>
+								<button type="button" onClick={this.clickSignIn} className="btn btn-secondary m-3">Register</button>
 							</div>
 						</form>
 					</div>
@@ -47,7 +84,7 @@ class Login extends Component {
 					<div className='col-4 justify-content-center centrar card p-3 mb-5'>
 						<div className="card-body">
 							<h5 className="card-title text-center">⏱⏱ About us ⏱⏱</h5>
-							<p className="card-text text-center"> We are here to manage your tasks for all the proyects you have. Manage every single task stage and assign them to your colleagues. Most importantly: record How much time takes you to do each task.</p>
+							<p className="card-text text-center"> We are here to help you find the best job offers!</p>
 						</div>
 					</div>
 				</div>
@@ -66,4 +103,14 @@ class Login extends Component {
 	}
 }
 
-export default withRouter(Login);
+export default withTracker(() => {
+    Meteor.subscribe('usuarios'); //La configuracion fue definida en ofertas.js en el API.
+
+    // ! Estas son las vistas deseadas del contenido en la colleccion, son arreglos.
+    // ! Si desea otras puede colocar una nueva entrada en el diccionario de salida cuyo valor es el arreglo consulta.
+
+    return {
+        usuarios: Usuarios.find({}).fetch(),
+    };
+
+})(Login);
