@@ -25,11 +25,11 @@ class UsuarioOfertas extends Component {
         //! Si desea hacer pruebas que el _id corresponda a un usuario en la base de datos al igual que el tag de la oferta.
 
         user : { 
-            "_id" : "5da47c6abb92e0707f99fb43",
-            "nombre": "Andres Lopez",
-            "email": "example@example.com",
-            "password": "test",
-            "ofertas": ["5da4794dbb92e0707f99fb42"]
+            "_id" : this.props.usuario._id,
+            "nombre": this.props.usuario.nombre,
+            "email": this.props.usuario.email,
+            "password": this.props.usuario.password,
+            "ofertas": this.props.usuario.ofertas
         }
     };
 
@@ -66,7 +66,7 @@ class UsuarioOfertas extends Component {
     render() {
         return (
             <div className="container-fluid">
-                <h4 className="justify-content-center"> Ofertas Laborales </h4>
+                <h4 className="justify-content-center"> Mis ofertas </h4>
                 <ul>{this.renderOfertas()}</ul>
             </div>
         );
