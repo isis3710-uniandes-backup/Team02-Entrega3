@@ -45,7 +45,6 @@ class Login extends Component {
 
 			//* Actualizar el nombre de usuario con el estado padre.
 			let user_data = data; //Datos del usuario.
-			console.log(this.props.userf);
 			this.props.history.push({ //* Actualizar la vista.
 				pathname: '/ofertas',
 				correo: user_data.email,

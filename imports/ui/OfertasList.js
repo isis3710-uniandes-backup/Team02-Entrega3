@@ -14,6 +14,7 @@ class OfertasList extends Component {
     // ! En las siguientes funciones se establece la llamada a las operaciones CRUD declaradas en el API.
     // ! Para el componente de lista solo dejaremos disponible crear nuevas ofertas.    
 
+
     insertOferta = () => {
         // TODO Completar la accion de insertar una oferta dado un formulario, la info debe quedar en un diccionario.        
         let nuevaOferta = {};
@@ -26,13 +27,11 @@ class OfertasList extends Component {
         //TODO Refactorizar el codigo de las ofertas para que quede bonito.
         let ofertas = this.props.ofertas; //Accede a las ofertas definidas en la DB, obtenidas por withTracker().
         return ofertas.map(elemento => {
-            return (<Oferta key={elemento._id} oferta={elemento} principal={true} usuario={this.props.history.location}/>); //Renderizar cada una de las ofertas.
+            return (<Oferta key={elemento._id} oferta={elemento} principal={true} usuario={this.props.usuario}/>); //Renderizar cada una de las ofertas.
         });
     }
 
-    componentDidMount(){
-        console.log("props",this.props.history.location);
-    }
+    
 
     handleClickAgregarOferta = () => {
         $('#modalAgregarOferta').modal('show');

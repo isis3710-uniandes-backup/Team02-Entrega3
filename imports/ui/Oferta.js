@@ -29,6 +29,7 @@ export default class Oferta extends Component {
         }
         
     }
+
     // ? Elimina la oferta actual.
     deleteOferta = () => {
         if (this.props.principal) {
