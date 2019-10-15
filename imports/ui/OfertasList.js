@@ -11,10 +11,6 @@ import Oferta from './Oferta';
 
 class OfertasList extends Component {
 
-    state = {
-        dataNuevaOferta: ''
-    }
-
     // ! En las siguientes funciones se establece la llamada a las operaciones CRUD declaradas en el API.
     // ! Para el componente de lista solo dejaremos disponible crear nuevas ofertas.    
 
@@ -128,27 +124,27 @@ class OfertasList extends Component {
                                 <form id="form-oferta" onSubmit={this.handleSubmit.bind(this)}>
                                     <div className="form-group">
                                         <label htmlFor="inputNombreOferta">Nombre </label>
-                                        <input type="text" name="nombreOferta" className="form-control" id="inputNombreOferta" placeholder="Nombre de la oferta"></input>
+                                        <input type="text" name="nombreOferta" className="form-control" id="inputNombreOferta" placeholder="Ej: Rappi Desarrollador Front-End"></input>
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="inputDescripcion">Descripcion </label>
                                         <textarea type="text" name="descripcion" className="form-control" id="inputDescripcion"
-                                            placeholder="Descripcion de la oferta"></textarea>
+                                            placeholder="Ej: Desarrollador front-end con experiencia en frameworks como Angular y React."></textarea>
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="inputCarreraProfesional">Carrera profesional </label>
                                         <input type="text" name="carreraProfesional" className="form-control" id="inputCarreraProfesional"
-                                            placeholder="Carrera profesional requerida"></input>
+                                            placeholder="Ej: Ingeniería de Sistemas y Computación"></input>
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="inputArea">Area </label>
                                         <input type="text" name="area" className="form-control" id="inputArea"
-                                            placeholder="Area"></input>
+                                            placeholder="Ej: Marketing"></input>
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="inputCiudad">Ciudad </label>
                                         <input type="text" name="ciudad" className="form-control" id="inputCiudad"
-                                            placeholder="Ciudad de la oferta"></input>
+                                            placeholder="Ej: Medellin"></input>
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="inputFechaExpiracion">Fecha de expiracion </label>
@@ -157,27 +153,27 @@ class OfertasList extends Component {
                                     <div className="form-group">
                                         <label htmlFor="inputExperiencia">Experiencia </label>
                                         <input type="text" name="experiencia" className="form-control" id="inputExperiencia"
-                                            placeholder="Experiencia requerida"></input>
+                                            placeholder="Ej: 2 años"></input>
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="inputNivelEducacion">Nivel de educacion </label>
                                         <input type="text" name="nivelEducacion" className="form-control" id="inputNivelEducacion"
-                                            placeholder="Nivel de educacion requerida"></input>
+                                            placeholder="Ej: Universitaria"></input>
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="inputTipoContrato">Tipo de contrato </label>
                                         <input type="text" name="tipoContrato" className="form-control" id="inputTipoContrato"
-                                            placeholder="Tipo de contrato de la oferta"></input>
+                                            placeholder="Ej: Contrato laboral flexible"></input>
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="inputSalarioMinimo">Salario mínimo </label>
                                         <input type="number" name="salarioMinimo" className="form-control" id="inputSalarioMinimo"
-                                            placeholder="Salario mínimo de la oferta"></input>
+                                            placeholder="Ej: 1000"></input>
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="inputSalarioMaximo">Salario máximo </label>
                                         <input type="number" name="salarioMaximo" className="form-control" id="inputSalarioMaximo"
-                                            placeholder="Salario máximo de la oferta"></input>
+                                            placeholder="Ej: 2000"></input>
                                     </div>
                                     <div className="row">
                                         <div className="col-6">
