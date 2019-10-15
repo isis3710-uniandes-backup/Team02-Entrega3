@@ -74,7 +74,7 @@ class OfertasList extends Component {
                 "ciudad": ciudad,
                 "nombre": nombreOferta,
                 "descripcion": descripcion,
-                "CarreraProfesional": carreraProfesional,
+                "carreraProfesional": carreraProfesional,
                 "fechaPublicacion": new Date(),
                 "fechaExpiracion": fechaExpiracion,
                 "area": area,
