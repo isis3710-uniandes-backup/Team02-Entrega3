@@ -50,8 +50,8 @@ export default class Oferta extends Component {
 
     añadirOfertaAUsuario() {
         console.log(this.props.usuario._id);
-        let o_id = new Meteor.Collection.ObjectID(this.props.usuario._id);
-        Meteor.call('usuarios.insert.oferta', o_id, this.props.oferta._id);
+        ;
+        Meteor.call('usuarios.insert.oferta', this.props.usuario.nombre, this.props.oferta._id);
     }
 
     verMas(){

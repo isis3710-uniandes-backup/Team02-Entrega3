@@ -39,6 +39,9 @@ Meteor.methods({
             throw new Meteor.Error('[Ofertas] Usuario No Autorizado');
         }
 
+        let o_id = new Meteor.Collection.ObjectID();
+        oferta["_id"] = o_id;
+
         //Ejecutar la accion en la base de datos sobre la colleccion.
         Ofertas.insert(oferta);
     },

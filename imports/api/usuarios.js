@@ -39,6 +39,14 @@ Meteor.methods({
     // ? El parametro usuario es un diccionario con la estructura de los datos de usuario.
     'usuarios.insert'(usuario) {
         //Ejecutar la accion en la base de datos sobre la colleccion.
+        console.log(usuario);
+
+        //El bendito Meteor Mongo sobre escribe el metodo insert y no genera un ObjectID.
+        let o_id = new Meteor.Collection.ObjectID();
+
+        //Agregar el campo.
+        usuario["_id"] = o_id;
+
         Usuarios.insert(usuario);
     },
 
@@ -65,7 +73,7 @@ Meteor.methods({
 
     // ? Asocia una oferta laboral con un usuario cuando es de su preferencia.
     'usuarios.insert.oferta'(usuarioID, ofertaID) {
-        const usuario = Usuarios.findOne(usuarioID); //Obtiene el documento de la oferta dada su ID
+        const usuario = Usuarios.findOne({nombre:usuarioID}); //Obtiene el documento de la oferta dada su ID
         if (usuario ===  undefined || usuario === null) {
             throw new Meteor.Error(`[Usuarios] Lo sentimos el usuario con ID: ${usuarioID} no existe.`);
         }
@@ -77,7 +85,6 @@ Meteor.methods({
 
         //Agregar la nueva id al arreglo.
         let uOfertas = usuario.ofertas;
-        console.log(uOfertas);
         uOfertas.push(ofertaID);
         console.log(`Las ofertas del usuario ${usuarioID} son: ${uOfertas}`);
 
