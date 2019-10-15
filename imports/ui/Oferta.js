@@ -12,6 +12,7 @@ export default class Oferta extends Component {
     // ! Aqui se incluyen las diferentes opciones que no son parte del Retrieve en el CRUD.
 
     constructor(props) {
+        console.log("[Oferta] Propiedades", props);
         super(props);
         this.handleVerMas = this.handleVerMas.bind(this);
         this.state = { verMas: false };
@@ -72,6 +73,7 @@ export default class Oferta extends Component {
     render() {
         //TODO Terminar bien la visualizacion de la oferta, dejar el HTML bonito.
         const { oferta } = this.props; //Declaracion oferta = this.props.oferta
+        console.log("[Oferta] Render Data", oferta);
         const verMas = this.state.verMas;
         if (this.state.verMas) {
             return (
