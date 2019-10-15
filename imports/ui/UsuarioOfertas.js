@@ -55,7 +55,8 @@ class UsuarioOfertas extends Component {
         //TODO Pasar la informacion del usuario cuando se conecta y deshabilitar el user de prueba.       
 
         let uOfertas = this.state.user.ofertas;
-        console.log("[UsuarioOfertas] Ofertas del state", uOfertas);        
+        console.log("[UsuarioOfertas] Ofertas del state", uOfertas); 
+        console.log("[UsuarioOfertas] Propiedades", this.props);        
         let respuesta = []; //Componentes.
 
         for (let i of uOfertas) { //Ofertas del usuario.
@@ -64,7 +65,7 @@ class UsuarioOfertas extends Component {
                 console.log("Solo i", i);
                 console.log("Solo j", j);
                 if (i === j._id) {
-                    respuesta.push(<Oferta key={j._id} oferta={j} principal={false} delete={this.deleteOferta}/>);
+                    respuesta.push(<Oferta key={j._id} oferta={j} principal={false} delete={this.deleteOferta} usuario={this.props.usuario}/>);
                 }
             }
         }
