@@ -62,6 +62,45 @@ class OfertasBoard extends Component {
 			);
 		} else {
 			return (
+				<div className="row justify-content-center">
+					<div className="col-3">
+						<Usuario user={this.props.history.location} />
+					</div>
+				</div>
+			);
+		}
+	};
+
+	changeHome = () => {
+		this.setState({ favoritos: 0 });
+	};
+
+	changeCuenta = () => {
+		this.setState({ favoritos: 2 });
+	};
+
+	showFavoritos = () => {
+		if (this.state.favoritos == 0) {
+			return (
+				<div className="row">
+					<div className="col-4">
+						<FilterColumn />
+					</div>
+					<div className="col-8">
+						<OfertasList usuario={this.props.history.location} />
+					</div>
+				</div>
+			);
+		} else if (this.state.favoritos == 1) {
+			return (
+				<div className="row">
+					<div className="col-12">
+						<UsuarioOfertas usuario={this.props.history.location} />
+					</div>
+				</div>
+			);
+		} else {
+			return (
 				<div className="row">
 					<div className="col-12">
 						<Usuario user={this.props.history.location} />
