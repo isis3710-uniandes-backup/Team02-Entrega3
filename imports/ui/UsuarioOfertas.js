@@ -40,8 +40,8 @@ class UsuarioOfertas extends Component {
     deleteOferta = (ofertaId) => {
         this.state.user.ofertas.splice(ofertaId, 1); //Elimina el elemento con el id dado.
         this.setState({user: this.state.user}); //Actualizar el estado del componente.
-        let o_id = new Meteor.Collection.ObjectID(this.state.user._id); //Despues de un siglo .____.
-        Meteor.call('usuarios.remove.oferta', o_id, ofertaId);        
+        //let o_id = new Meteor.Collection.ObjectID(this.state.user._id); //Despues de un siglo .____.
+        Meteor.call('usuarios.remove.oferta', this.state.user._id, ofertaId);        
     }
 
     renderOfertas() {
