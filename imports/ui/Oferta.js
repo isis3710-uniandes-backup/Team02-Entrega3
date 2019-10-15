@@ -50,9 +50,10 @@ export default class Oferta extends Component {
 
     añadirOfertaAUsuario() {
         //TODO poner routing del usuario y cambiar esto
-        console.log(this.props.usuario._id);
-        let o_id = new Meteor.Collection.ObjectID(this.props.usuario._id);
-        Meteor.call('usuarios.insert.oferta', o_id, this.props.oferta._id);
+        console.log(`El ID del usuario es: ${this.props.usuario._id}`);
+        console.log(`El ID de la oferta es: ${this.props.oferta._id}`);
+        //let o_id = new Meteor.Collection.ObjectID(this.props.usuario._id);
+        Meteor.call('usuarios.insert.oferta', this.props.usuario._id, this.props.oferta._id);
     }
 
     verMas(){

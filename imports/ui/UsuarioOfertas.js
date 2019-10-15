@@ -33,6 +33,10 @@ class UsuarioOfertas extends Component {
         }
     };
 
+    componentDidMount() {
+        console.log("Propiedades", this.props);
+    };
+
     deleteOferta = (ofertaId) => {
         this.state.user.ofertas.splice(ofertaId, 1); //Elimina el elemento con el id dado.
         this.setState({user: this.state.user}); //Actualizar el estado del componente.
@@ -46,15 +50,20 @@ class UsuarioOfertas extends Component {
         // ! Se deja un usuario de prueba.
 
         let ofertas = this.props.ofertas; //Accede a las ofertas definidas en la DB, obtenidas por withTracker().        
+        console.log("[UsuarioOfertas] Ofertas obtenidas por withTracker", ofertas);
         // ? Comentario Personal: Meteor se explota con cualquier undefined y no compila nada :'( incluso en consultas de tipo (if a === undefined).
         //TODO Pasar la informacion del usuario cuando se conecta y deshabilitar el user de prueba.       
 
-        let uOfertas = this.state.user.ofertas;        
+        let uOfertas = this.state.user.ofertas;
+        console.log("[UsuarioOfertas] Ofertas del state", uOfertas);        
         let respuesta = []; //Componentes.
 
         for (let i of uOfertas) { //Ofertas del usuario.
             for (let j of ofertas) { //Ofertas totales.
-                if (i === j._id._str) {
+                console.log("Datos de i", i._str);
+                console.log("Solo i", i);
+                console.log("Solo j", j);
+                if (i === j._id) {
                     respuesta.push(<Oferta key={j._id} oferta={j} principal={false} delete={this.deleteOferta}/>);
                 }
             }
@@ -67,7 +76,7 @@ class UsuarioOfertas extends Component {
         return (
             <div className="container-fluid">
                 <h4 className="justify-content-center"> Mis ofertas </h4>
-                <ul>{this.renderOfertas()}</ul>
+                {this.renderOfertas()}
             </div>
         );
     };
