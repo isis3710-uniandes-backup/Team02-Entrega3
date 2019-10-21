@@ -33,3 +33,6 @@ https://www.youtube.com/watch?v=kxYBCXr3XhI&feature=youtu.be
 https://youtu.be/WZip8kPdl-A
 
 ---
+
+## IP Server
+http://52.168.89.222:8080/
